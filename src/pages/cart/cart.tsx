@@ -26,7 +26,7 @@ export const Cart = () => {
                         <p>{product.title}</p>
                         <p>{product.price}лв</p>
                         <p>{product.quantity}</p>
-                        <div>
+                        <div style={{verticalAlign: 'middle'}}>
                             <Button className='btn-sm mx-1' variant="outline-dark" onClick={() => updateItemQuantity(product.id, product.quantity - 1)}>-</Button>
                             <Button className='btn-sm mx-1' variant="outline-dark" onClick={() => updateItemQuantity(product.id, product.quantity + 1)}>+</Button>
                             <Button className='btn-sm mx-1' variant="outline-danger" onClick={() => removeItem(product.id)}>Delete</Button>
