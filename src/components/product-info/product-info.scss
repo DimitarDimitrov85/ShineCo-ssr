@@ -1,0 +1,31 @@
+figure {
+    // width: 880px;
+    width: 100%;
+    background-repeat: no-repeat;
+
+    & img {
+        display: block;
+        width: 100%;
+        cursor: zoom-in;
+    }
+
+    &:hover img {
+        opacity: 0;
+    }
+}
+
+.small-pic {
+    width: 100px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        transform: scale(1.1);
+        
+    }
+}
+  
+
+  

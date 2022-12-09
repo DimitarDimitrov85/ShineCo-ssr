@@ -1,0 +1,54 @@
+input:hover, 
+input:active, 
+input:focus
+{
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
+form {
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+
+    .info-user-input {
+        border: none; 
+        border-bottom: 1px solid rgb(187, 187, 187); 
+        border-radius: 0
+    }
+
+    h4 {
+        margin-top: 30px
+    }
+
+    .delivery {
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    textarea {
+        display: none;
+    }
+}
+
+.send-result {
+    text-align: center;
+    height: 120px; 
+    margin-bottom: 20px;
+
+    .spinner {
+        width: 80px; 
+        height: 80px;
+    }
+
+    .successful{
+        color: red
+    }
+
+    .error {
+        color: red
+    }
+}

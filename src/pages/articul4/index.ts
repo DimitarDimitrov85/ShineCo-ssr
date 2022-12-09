@@ -1,0 +1,1 @@
+export { Articul4 } from './Articul4'

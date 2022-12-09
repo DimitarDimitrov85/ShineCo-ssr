@@ -1,5 +1,5 @@
 body {
-  background: rgb(253, 253, 253);
+  // background: rgb(253, 253, 253);
    /* width */
    &::-webkit-scrollbar {
     width: 10px;
@@ -8,7 +8,7 @@ body {
 /* Track */
 &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
+    // border-radius: 10px;
 }
 
 /* Handle */

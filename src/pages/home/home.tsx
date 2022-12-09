@@ -9,14 +9,16 @@ export const Home = () => {
     return (
         <div>
             <Carousel fade pause={false} controls={false} indicators={false} >
+                {/* <Carousel.Item style={{backgroundImage: 'url(/images/3_n.jpg)', backgroundPosition: 'center', background: 'red'}}> */}
                 <Carousel.Item>
-                    <img
-                    className="d-block w-100"
+                    <div
+                    // className="d-block w-100"
+                    style={{backgroundImage: 'url(/images/3_n.jpg)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'700px'}}
                     // src="/logo192.png"
-                    src="/images/3_n.jpg"
-                    alt="First slide"
-                    height={'700px'}
-                    width={"100px"}
+                    // src="/images/3_n.jpg"
+                    // alt="First slide"
+                    // height={'700px'}
+                    // width={"100%"}
                     />
                     <Carousel.Caption>
                     <h3>First slide label</h3>
@@ -24,12 +26,15 @@ export const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    <div 
+                        style={{backgroundImage: 'url(/images/7_n.jpg)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'700px'}}
+                    />
+                    {/* <img
                     className="d-block w-100"
                     src="/images/7_n.jpg"
                     alt="Second slide"
                     height={'700px'}
-                    />
+                    /> */}
 
                     <Carousel.Caption>
                     <h3>Second slide label</h3>
@@ -37,12 +42,15 @@ export const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    <div 
+                        style={{backgroundImage: 'url(/images/25_n.jpg)', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'700px'}}
+                    />
+                    {/* <img
                     className="d-block w-100"
                     src="/images/25_n.jpg"
                     alt="Third slide"
                     height={'700px'}
-                    />
+                    /> */}
                     <Carousel.Caption>
                     <h3>Third slide label</h3>
                     <p>
