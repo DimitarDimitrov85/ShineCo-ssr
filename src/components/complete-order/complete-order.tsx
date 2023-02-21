@@ -4,16 +4,22 @@ import emailjs from '@emailjs/browser'
 import { useCart } from 'react-use-cart'
 import { Icon } from '../../components'
 import { Row, Col } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
+
+import axios from 'axios'
 
 import './complete-order.scss'
 
 
-// Да има ли или да няма цена понеже може да се промени ??????????????
-
 const _deliveryPrice = {
-    Econt: 6,
-    Speedy: 7
+    ekont: 6,
+    speedy: 7
 } as any
+
+// const officeAdress = {
+//     ekont: ['ul. Ekont A', 'ul. Ekont V', 'ul. Ekont B', 'ul. Ekont F', 'ul. Ekont E'],
+//     speedy: ['ul. Speedy A', 'ul. Speedy V', 'ul. Speedy B', 'ul. Speedy P', 'ul. Speedy E']
+// } as any
 
 const Input = ({type, placeholder, name, title}: any) => {
     return (
@@ -26,11 +32,14 @@ const Input = ({type, placeholder, name, title}: any) => {
 }
 
 export const CompleteOrder = () => {
+    
     const form = useRef<any>()
     const [message, setMessage] = useState('')
     const [isSending, steIsSending] = useState(false)
     const [deliveryCompany, setDeliveryCompany] = useState('')
+    const [deliveryAddress, setDeliveryAddress] = useState('')
     const [sendResult, setSendResult] =useState('')
+    const [selectedOfficeAdress, setSelectedOfficeAdress] = useState('')
     const { 
         isEmpty,
         totalUniqueItems,
@@ -42,17 +51,45 @@ export const CompleteOrder = () => {
         emptyCart,
     } = useCart()
 
-    const [totalPrice, setTotalPrice] = useState(cartTotal)
+    const  { discountInfo } = useSelector((state: any) => state.ui)
+    const [totalPrice, setTotalPrice] = useState<any>(null)
+    const [officeAdress, setOfficeAdress] = useState<any>({
+        ekont: ['ul. Ekont A', 'ul. Ekont V', 'ul. Ekont B', 'ul. Ekont F', 'ul. Ekont E'],
+        speedy: ['ul. Speedy A', 'ul. Speedy V', 'ul. Speedy B', 'ul. Speedy P', 'ul. Speedy E']
+    })
+
+
+
 
     useEffect(() => {
-        console.log(items)
+        axios.get('http://ee.econt.com/services/Nomenclatures/NomenclaturesService.getOffices.json').then((e: any) => {
+            console.log(e.data.offices)
+            setOfficeAdress({...officeAdress, ekont: e.data.offices})
+        }) // ekont api
+        // axios.get('https://api.speedy.bg/v1/location/office/').then((e: any) => console.log(e)) // speedy api
+    },[])
+
+    useEffect(() => {
+        setTotalPrice(discountInfo?.price || cartTotal)
+    },[discountInfo, cartTotal])
+
+    useEffect(() => {
+        deliveryAddress === 'До адрес' && setSelectedOfficeAdress('')
+        console.log('selectedOfficeAdress', selectedOfficeAdress)
         let text: any = ''
         items.forEach((item) => {
             text += `${item.title}: ${item.quantity}pieces,\n`
             
         })
-        setMessage(`Order:\n ${text}\n Total price: ${totalPrice}лв., \n Delivery company: ${deliveryCompany}`)
-    },[deliveryCompany])
+        setMessage(`Поръчка:\n ${text}\n Общо: ${totalPrice}лв,
+        ${discountInfo ? `
+        \n Намаление с код: ${discountInfo.discountCode}, -${discountInfo.percent}%` : ''}
+        \n Фирма доставчик: ${deliveryCompany}
+        \n ${deliveryAddress}
+        \n ${deliveryAddress === 'До офис на куриер' ? `${selectedOfficeAdress}` : ''}`)
+
+
+    },[deliveryCompany, deliveryAddress, selectedOfficeAdress])
 
     const sendEmail = useCallback((e: any) => {
 
@@ -79,10 +116,18 @@ export const CompleteOrder = () => {
 
     const onDeliveryChange = useCallback((e: any) => {
         setDeliveryCompany(e.currentTarget.id)
-        console.log(cartTotal + _deliveryPrice[e.currentTarget.id])
-        setTotalPrice(cartTotal + _deliveryPrice[e.currentTarget.id])
-        console.log(e.currentTarget.id)
-    },[cartTotal])
+        setTotalPrice(totalPrice + _deliveryPrice[e.currentTarget.id])
+    },[totalPrice])
+
+    const onAddressChange = useCallback((e: any) => {
+        setDeliveryAddress(e.currentTarget.id)
+    },[])
+
+ 
+    const onValueChange = useCallback((e: any) => {
+        console.log(e.target.value)
+        setSelectedOfficeAdress(e.target.value)
+    }, [])
 
     return (
         <div>
@@ -125,19 +170,55 @@ export const CompleteOrder = () => {
                 
                 <div className='delivery'>
                     <h5>Total Price: {totalPrice}лв</h5>
-                    <div>
-                        <p>Choose delivery company</p>
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="Econt" onChange={onDeliveryChange}/>
-                            <label className="form-check-label" htmlFor="Econt">
-                                Econt
-                            </label>
+                    <div style={{width: '300px'}}>
+                        <p>Изберете начин за доставка</p>
+                        <div className='d-flex justify-content-between contact'>
+                            <div className='form-check'>
+                                <input className='form-check-input' type='radio' name='flexRadioDefault' id='ekont' onChange={onDeliveryChange}/>
+                                <label className='form-check-label' htmlFor='ekont'>
+                                    Econt
+                                </label>
+                            </div>
+                            <div className='form-check'>
+                                <input className='form-check-input' type='radio' name='flexRadioDefault' id='speedy'  onChange={onDeliveryChange}/>
+                                <label className="form-check-label" htmlFor="speedy">
+                                    Speedy
+                                </label>
+                            </div>
                         </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="Speedy"  onChange={onDeliveryChange}/>
-                            <label className="form-check-label" htmlFor="Speedy">
-                                Speedy
-                            </label>
+                        <div className='d-flex justify-content-between contact'>
+                            <div className='form-check'>
+                                <input className='form-check-input' type='radio' name='address' id='До адрес' onChange={onAddressChange}/>
+                                <label className='form-check-label' htmlFor='До адрес'>
+                                    До адрес
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className='form-check-input' type='radio' name='address' id='До офис на куриер' onChange={onAddressChange}/>
+                                <label className='form-check-label' htmlFor='До офис на куриер'>
+                                    До офис на куриер
+                                </label>
+                            </div>
+                        </div>
+                        <div className="input-group mb-3">
+                            {/* <label className="input-group-text" for="inputGroupSelect01">Options</label> */}
+                            <select className="form-select" id="inputGroupSelect" onChange={onValueChange}>
+                                <option value=''>Choose...</option>
+                                {/* { deliveryAddress === 'До офис на куриер' && 
+                                    officeAdress[deliveryCompany]?.map((a: any) => (
+                                        <option key={a} value={a}>{a}</option>
+                                    ))
+                                } */}
+                                { deliveryAddress === 'До офис на куриер' && 
+                                    officeAdress[deliveryCompany]?.map((a: any) => (
+                                        <option key={a.id} value={a.address.fullAddress}>{a.address.fullAddress}</option>
+                                    ))
+                                }
+                                {/* <option selected>Choose...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option> */}
+                            </select>
                         </div>
                     </div>
                 </div>

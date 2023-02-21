@@ -1,13 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ListGroup, CloseButton, Image, Button } from 'react-bootstrap/'
+import { ListGroup, CloseButton, Image, Button } from 'react-bootstrap'
 import { useCart } from 'react-use-cart'
 import { Link } from 'react-router-dom'
 import { Icon } from '../../components'
+
+import { setActivePage } from '../../slices/uiSlice'
+import { useDispatch } from 'react-redux'
 
 import './order-panel.scss'
 
 export const OrderPanel = ({ hidePanel, position}: any) => {
     const [positionTop, setPositionTop] = useState(55)
+    const dispatch = useDispatch()
     const [selectedProductIds, setSelectedProductIds] = useState<any>([])
 
     useEffect(() => {
@@ -35,6 +39,10 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
     },[handleScroll])
 
     
@@ -54,7 +62,7 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
                             iconName="Trash3"
                             color="rgb(175, 175, 175)"
                             size={15}
-                            className=""
+                            className="delete"
                             onClick={() => removeItem(product.id)}
                             id={product.id}
                         />
@@ -65,8 +73,8 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
                     <span>Total Price: {cartTotal}лв</span>
                 </ListGroup.Item> */}
             </ListGroup>
-            <div className='d-flex justify-content-between' style={{width: '90%', margin: 'auto', background: 'rgb(37, 37, 37)', color: 'white', paddingTop: '10px', paddingBottom: '10px'}}>
-                <Link to='/cart' onClick={hidePanel}><Button className='' variant="outline-success">Checking Cart</Button></Link>
+            <div className='d-flex justify-content-between' style={{width: '90%', margin: 'auto', background: 'rgb(80, 80, 80);', color: 'white', paddingTop: '10px', paddingBottom: '10px'}}>
+                <Link to='/cart' id='hide' onClick={hidePanel}><Button className='checking-cart' variant="outline-success">Checking Cart</Button></Link>
                 <span>Total Price: {cartTotal}лв</span>
             </div>
         </div>

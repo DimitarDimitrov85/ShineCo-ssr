@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Cards } from '../../components'
 import { data } from '../../data'
 
-export const Articul5 = () => {
+export const OtherArticuls = () => {
     return (
         <div>
-            <h2 style={{textAlign: 'center'}}>Articul5</h2>
-            <Cards data={data.tables}/>
+            <h2 style={{textAlign: 'center'}}>OtherArticuls</h2>
+            <Cards data={data.others}/>
         </div>
     )
 }

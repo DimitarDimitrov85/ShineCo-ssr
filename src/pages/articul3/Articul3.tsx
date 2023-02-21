@@ -6,7 +6,7 @@ export const Articul3 = () => {
     return (
         <div>
             <h2  style={{textAlign: 'center'}}>Articul3</h2>
-            <Cards data={data}/>
+            <Cards data={data.clocks}/>
         </div>
     )
 }

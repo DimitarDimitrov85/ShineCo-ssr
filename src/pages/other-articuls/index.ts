@@ -1,0 +1,1 @@
+export { OtherArticuls } from './other-articuls'

@@ -1,1 +1,1 @@
-export { Articul2 } from './Articul2'
+export { Articul2 } from './articul2'

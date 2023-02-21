@@ -1,0 +1,28 @@
+.corosel-item {
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    height: 700px;
+}
+
+.info {
+    width: 50%; 
+    margin: auto; 
+    text-align: center;
+
+    .section-pics {
+        width: 50%;
+        margin: auto;
+        margin-bottom: 50px;
+
+        h3 {
+            position: absolute;
+            color: rgb(137,123,45);
+        }
+    }
+
+    p {
+        font-family: Lora, Serif;
+        font-size: 1.1em;
+    }
+}

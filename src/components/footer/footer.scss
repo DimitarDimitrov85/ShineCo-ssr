@@ -1,0 +1,53 @@
+@mixin social-media-btn($color) {
+    cursor: pointer;
+    color: $color
+}
+
+.contacts-info {
+    margin: auto;
+    // margin: 20px 0 20px 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 500px;
+
+    .contact {
+        width: 300px; 
+        margin: auto;
+    
+        p {
+            color: white;
+            margin-left: 13px
+        }
+    }
+
+    .social-media-contact {
+        margin-right: 10px;
+        // font-size: 30px;
+        width: 35px;
+
+        &:hover {
+            cursor: pointer;
+        }
+        // -webkit-text-fill-color: transparent !important;
+        // color: transition !important;
+        // background-clip: text !important;
+        // background-image: linear-gradient(to right purple, pink) !important;
+
+        // color: rgb(153, 153, 153);
+       
+        // transition: color 0.2s ease-in-out;
+
+        // &.instagram:hover {
+        //     @include social-media-btn(rgb(247, 237, 95))
+        // }
+
+        // &.facebook:hover {
+        //     @include social-media-btn(rgb(59,113,202))
+        // }
+
+        // &.tiktok:hover {
+        //     @include social-media-btn(white)
+        // }
+        
+    }
+}
