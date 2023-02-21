@@ -186,12 +186,12 @@ export const Home = () => {
 
                         НАШАТА ЦЕЛ Е КЛИЕНТЪТ ДА ОСТАНЕ ДОВОЛЕН ОТ КАЧЕСТВОТО, ОТ ИЗБОРА, И ОТ ОБСЛУЖВАНЕТО.
                     </p>
-                    <SectionPictures imgData={data.home.clocks} urlPath='Articul3' align='marginRight' title={{value: 'Часовници', position: '-1'}} showing='zoom-in' id='3'/>
-                    <SectionPictures imgData={data.home.pads} urlPath='Articul1' align='marginLeft' title={{value: 'Подложки', position: '87'}} showing='zoom-in-up' id='1'/>
-                    <SectionPictures imgData={data.home.tables} urlPath='Articul5' align='marginRight' title={{value: 'Маси', position: '-1'}} showing='zoom-in-down' id='5'/>
-                    <SectionPictures imgData={data.home.fruitBowls} urlPath='Articul4'align='marginLeft' title={{value: 'Фруктиери', position: '87'}} showing='zoom-in-left' id='4'/>
-                    <SectionPictures imgData={data.home.salvers} urlPath='Articul2' align='marginRight' title={{value: 'Подноси', position: '-1'}} showing='zoom-in-right' id='2'/>
-                    <SectionPictures imgData={data.home.others} urlPath='other-articuls' align='marginLeft' title={{value: 'Други', position: '87'}} showing='zoom-in-right' id='6'/>
+                    <SectionPictures imgData={data.home.clocks} urlPath='product-clocks' align='marginRight' title={{value: 'Часовници', position: '-1'}} showing='zoom-in' id='3'/>
+                    <SectionPictures imgData={data.home.pads} urlPath='product-pads' align='marginLeft' title={{value: 'Подложки', position: '87'}} showing='zoom-in-up' id='1'/>
+                    <SectionPictures imgData={data.home.tables} urlPath='product-tables' align='marginRight' title={{value: 'Маси', position: '-1'}} showing='zoom-in-down' id='5'/>
+                    <SectionPictures imgData={data.home.fruitBowls} urlPath='product-fruitBowls'align='marginLeft' title={{value: 'Фруктиери', position: '87'}} showing='zoom-in-left' id='4'/>
+                    <SectionPictures imgData={data.home.salvers} urlPath='product-salver' align='marginRight' title={{value: 'Подноси', position: '-1'}} showing='zoom-in-right' id='2'/>
+                    <SectionPictures imgData={data.home.others} urlPath='other-product' align='marginLeft' title={{value: 'Други', position: '87'}} showing='zoom-in-right' id='6'/>
             </div>
             
 

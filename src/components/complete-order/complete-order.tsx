@@ -116,8 +116,8 @@ export const CompleteOrder = () => {
 
     const onDeliveryChange = useCallback((e: any) => {
         setDeliveryCompany(e.currentTarget.id)
-        setTotalPrice(totalPrice + _deliveryPrice[e.currentTarget.id])
-    },[totalPrice])
+        // setTotalPrice(totalPrice + _deliveryPrice[e.currentTarget.id])
+    },[])
 
     const onAddressChange = useCallback((e: any) => {
         setDeliveryAddress(e.currentTarget.id)

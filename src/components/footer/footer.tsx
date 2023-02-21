@@ -41,21 +41,25 @@ export const Footer = () => {
                         <div>
                             <a href="https://www.facebook.com/Art.Resin.Coaster" rel="noreferrer" target="_blank">
                                 <img src="/images/facebook.png" alt=""  className="social-media-contact"/>
-                            {/* <Icon
-                                iconName="Facebook"
-                                className="social-media-contact facebook"
-                            /> */}
+                                {/* <Icon
+                                    iconName="Facebook"
+                                    className="social-media-contact facebook"
+                                /> */}
                             </a>
-                            <img src="/images/instagram.png" alt=""  className="social-media-contact"/>
-                            {/* <Icon
-                                iconName="Instagram"
-                                className="social-media-contact instagram"
-                            /> */}
-                            <img src="/images/tiktok.png" alt=""  className="social-media-contact"/>
-                            {/* <Icon
-                                iconName="Tiktok"
-                                className="social-media-contact tiktok"
-                            /> */}
+                            <a href=" https://www.instagram.com/_shineco_/" rel="noreferrer" target="_blank">
+                                <img src="/images/instagram.png" alt=""  className="social-media-contact"/>
+                                {/* <Icon
+                                    iconName="Instagram"
+                                    className="social-media-contact instagram"
+                                /> */}
+                            </a>
+                            <a href="https://www.tiktok.com/@_shineco_" rel="noreferrer" target="_blank">
+                                <img src="/images/tiktok.png" alt=""  className="social-media-contact"/>
+                                {/* <Icon
+                                    iconName="Tiktok"
+                                    className="social-media-contact tiktok"
+                                /> */}
+                            </a>
                         </div>
                     </div>
                     

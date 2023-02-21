@@ -23,19 +23,17 @@ export const Cards = ({ data }: any) => {
 
 
     const showProductInfo = useCallback((e: any) => {
-        
+        // console.log('location.pathname', location.pathname)
         const id: any = Number(e.currentTarget.id)
         console.log(id)
         const finded: any = data.find((card: any) => card.id === id)
         const url: string = `${location.pathname}/${e.currentTarget.dataset.name}`
-        // dispatch(setCardInfo({id, urlPath: url}))
         dispatch(setCardInfo({...finded, urlPath: url}))
-        localStorage.setItem('productId', id)
-        localStorage.setItem('productUrl', url)
-        // localStorage.setItem('cardInfo', {...finded, urlPath: url})
+        localStorage.setItem('cardInfo', JSON.stringify({...finded, urlPath: url}))
         navigate(url)
         
-    },[dispatch, navigate, location])
+    },[dispatch, navigate, location, data])
+
     return (
             // <div style={{width: '50%', border: 'solid 3px black', margin: 'auto'}}>
             <div style={{width: '50%', margin: 'auto'}}>

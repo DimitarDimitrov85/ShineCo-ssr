@@ -15,12 +15,12 @@ export const NavBar = ( { orderPanelPosition }: any) => {
     // const [activePage, setActivePage] = useState<any>(null)
     const pages = [
         {path: '/', title: 'Home'},
-        {path: '/Articul1', title: 'Подложки'},
-        {path: '/Articul2', title: 'Подноси'},
-        {path: '/Articul3', title: 'Часовници'},
-        {path: '/Articul4', title: 'Фруктиери'},
-        {path: '/Articul5', title: 'Маси'},
-        {path: '/other-articuls', title: 'Други'},
+        {path: '/product-pads', title: 'Подложки'},
+        {path: '/product-salver', title: 'Подноси'},
+        {path: '/product-clocks', title: 'Часовници'},
+        {path: '/product-fruitBowls', title: 'Фруктиери'},
+        {path: '/product-tables', title: 'Маси'},
+        {path: '/other-product', title: 'Други'},
         {path: '/about-us', title: 'За нас'},
     ]
 

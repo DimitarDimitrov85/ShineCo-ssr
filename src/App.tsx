@@ -23,13 +23,11 @@ const App = () => {
     },[dispatch])
 
     useEffect(() => {
-        // console.log(localStorage.getItem('cardInfo'))
+        const currentCard: any = localStorage.getItem('cardInfo')
         // sessionStorage.clear()
         const discountInfo: any = sessionStorage.getItem('discountInfo')
-        // dispatch(setCardInfo((localStorage.getItem('cardInfo'))))
-        console.log(sessionStorage.getItem('activePage'))
+        dispatch(setCardInfo(JSON.parse(currentCard)))
         dispatch(setActivePage(Number(sessionStorage.getItem('activePage'))))
-        dispatch(setCardInfo({id: Number(localStorage.getItem('productId')), urlPath: localStorage.getItem('productUrl')}))
         dispatch(setDiscountInfo(JSON.parse(discountInfo)))
     },[dispatch])
     
@@ -41,12 +39,12 @@ const App = () => {
 
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='/Articul1' element={<Articul1 />}/>
-                    <Route path='/Articul2' element={<Articul2 />}/>
-                    <Route path='/Articul3' element={<Articul3 />}/>
-                    <Route path='/Articul4' element={<Articul4 />}/>
-                    <Route path='/Articul5' element={<Articul5 />}/>
-                    <Route path='/other-articuls' element={<OtherArticuls />}/>
+                    <Route path='/product-pads' element={<Articul1 />}/>
+                    <Route path='/product-salver' element={<Articul2 />}/>
+                    <Route path='/product-clocks' element={<Articul3 />}/>
+                    <Route path='/product-fruitBowls' element={<Articul4 />}/>
+                    <Route path='/product-tables' element={<Articul5 />}/>
+                    <Route path='/other-product' element={<OtherArticuls />}/>
                     <Route path='/about-us' element={<AboutUs />}/>
                     <Route path='/complete-order' element={<CompleteOrder />}/>
                     <Route path='/cart' element={<Cart />}/>
