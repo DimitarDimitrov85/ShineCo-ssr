@@ -1,0 +1,58 @@
+@import '../../_mixins';
+
+.info-about-us {
+    width: 50%; 
+    margin: auto;
+    margin-top: 10px;
+    padding: 0 10px 0 10px;
+    text-align: center;
+    background-image: url('../../../public/images/background/1_20.png');
+    background-repeat: none;
+    background-size: cover;
+
+    @include for-phone {
+        width: 90%;
+    }
+
+    img {
+        @include for-phone {
+            display: block !important;
+            width: 100%;
+            flex: none;
+        }
+    }
+
+    .row {
+        margin-bottom: 80px;
+
+        @include for-phone {
+            margin-bottom: 0;
+        }
+
+        .text {
+            @include for-phone {
+                display: block !important;
+                width: 100%;
+                flex: none;
+            }
+    
+            p {
+                line-height: 200%;
+    
+                @include for-phone {
+                    line-height: 150%;
+                }
+            }
+        }
+    }
+
+    video {
+        @include for-phone {
+            height: 200px;
+            width: 95%;
+        }
+    }
+
+   
+  
+}

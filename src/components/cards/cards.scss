@@ -1,23 +1,55 @@
 @import '../../_mixins';
 
-.card {
-    // background: transparent !important;
-    width: 18rem;
-    display: inline-block !important; 
-    margin: 15px;
-    box-shadow: 5px 15px 15px rgb(214, 214, 214);
-    border: none !important;
+.cards-list {
+    width: 50%; 
+    margin: auto;
+    margin-bottom: 10px;
+    // text-align: center;
 
-    img {
-        width: 100%;
-        height: 200px;
-        &:hover {
-            
-            cursor: pointer;
+    @include for-phone {
+        width: 80%;
+        text-align: center;
+    }
+
+    .card {
+        width: 18rem;
+        display: inline-block !important; 
+        margin: 15px;
+        box-shadow: 5px 15px 15px rgb(214, 214, 214);
+        border: none !important;
+
+        @include for-phone {
+            width: 16rem;
+            height: 300px;
+        }
+    
+        img {
+            width: 100%;
+            height: 200px;
+
+            @include for-phone {
+                height: 160px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .title {
+            margin-top: -5px;
+            text-overflow: ellipsis; 
+            overflow: hidden; 
+            white-space: nowrap;
+        }
+
+        .add-to-cart {
+            margin-top: 50px;
+
+            .add-to-cart-btn {
+                @include button
+            }
         }
     }
-
-    .add-to-cart {
-        @include button
-    }
 }
+

@@ -1,18 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ListGroup, CloseButton, Image, Button } from 'react-bootstrap'
+import { ListGroup, Image, Button } from 'react-bootstrap'
 import { useCart } from 'react-use-cart'
 import { Link } from 'react-router-dom'
 import { Icon } from '../../components'
+import CloseButton from 'react-bootstrap/CloseButton'
 
-import { setActivePage } from '../../slices/uiSlice'
-import { useDispatch } from 'react-redux'
 
 import './order-panel.scss'
 
 export const OrderPanel = ({ hidePanel, position}: any) => {
     const [positionTop, setPositionTop] = useState(55)
-    const dispatch = useDispatch()
-    const [selectedProductIds, setSelectedProductIds] = useState<any>([])
 
     useEffect(() => {
         window.addEventListener('click', hidePanel)
@@ -48,11 +45,12 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
     
     return (
         <div className='div-panel' style={{top: `${positionTop}px`, right: `${position}px`}} onClick={e => e.stopPropagation()}>
+            <CloseButton variant="white" className='close-btn' onClick={hidePanel} />
+            <h4>Koшничка</h4>
             <ListGroup  className='panel'>
-                {/* <ListGroup.Item className='item'>Current orders<CloseButton variant="white" onClick={hidePanel}/></ListGroup.Item> */}
-                {isEmpty ? <p>Empty Cart</p> :  items.map((product: any, index: any) => (
+                {isEmpty ? <p style={{textAlign: 'center'}}>Кошничката е празна</p> :  items.map((product: any, index: any) => (
                     <ListGroup.Item className='item' key={index}>
-                        <Image src={product.img} alt='pro' width='50px' height='50px'/>
+                        <Image src={product.img} alt='' width='80px' height='65px'/>
                         <div style={{textAlign: 'center'}}>
                             <p className='title'>{product.title}</p>
                             <p>{product.quantity} x {product.price}лв</p>
@@ -65,47 +63,20 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
                             className="delete"
                             onClick={() => removeItem(product.id)}
                             id={product.id}
+                            title='изтрий'
                         />
                     </ListGroup.Item>
                 ))}
-                {/* <ListGroup.Item className='item'>
-                    <Link to='/cart' onClick={hidePanel}><Button className='' variant="outline-success">Checking Cart</Button></Link>
-                    <span>Total Price: {cartTotal}лв</span>
-                </ListGroup.Item> */}
             </ListGroup>
-            <div className='d-flex justify-content-between' style={{width: '90%', margin: 'auto', background: 'rgb(80, 80, 80);', color: 'white', paddingTop: '10px', paddingBottom: '10px'}}>
-                <Link to='/cart' id='hide' onClick={hidePanel}><Button className='checking-cart' variant="outline-success">Checking Cart</Button></Link>
-                <span>Total Price: {cartTotal}лв</span>
-            </div>
+            {
+                !isEmpty && 
+                    <div className='d-flex justify-content-between checking-cart'>
+                        <Link to='/cart' id='hide' onClick={hidePanel}><Button className='checking-cart-btn' variant="outline-success">Преглед на кошничката</Button></Link>
+                        <span>Общо: {cartTotal}лв</span>
+                    </div>
+            }
+            
         </div>
-
-
-        // <ListGroup  className='panel' style={{right: `${position}px`, top: `${positionTop}px`}} onClick={e => e.stopPropagation()}>
-        //     {/* <ListGroup.Item className='item'>Current orders<CloseButton variant="white" onClick={hidePanel}/></ListGroup.Item> */}
-        //     {isEmpty ? <p>Empty Cart</p> :  items.map((product: any, index: any) => (
-        //         <ListGroup.Item className='item' key={index}>
-        //             <Image src={product.img} alt='pro' width='50px' height='50px'/>
-        //             <div>
-        //                 <p>{product.title}</p>
-        //                 <p>{product.quantity} x {product.price}лв</p>
-        //             </div>
-                    
-        //             <Icon
-        //                 iconName="Trash3"
-        //                 color="rgb(175, 175, 175)"
-        //                 size={15}
-        //                 className=""
-        //                 onClick={() => removeItem(product.id)}
-        //                 id={product.id}
-        //             />
-        //         </ListGroup.Item>
-        //     ))}
-        //     <ListGroup.Item className='item'>
-        //         <Link to='/cart' onClick={hidePanel}><Button className='' variant="outline-success">Checking Cart</Button></Link>
-        //         <span>Total Price: {cartTotal}лв</span>
-        //     </ListGroup.Item>
-        // </ListGroup>
-        
     )
 
 

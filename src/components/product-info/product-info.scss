@@ -1,36 +1,106 @@
 @import '../../_mixins';
 
-figure {
-    // width: 880px;
-    width: 100%;
-    background-repeat: no-repeat;
+.product-info {
+    margin: auto;
+    margin-top: 50px; 
+    margin-bottom: 50px;
+    width: 70%;
 
-    & img {
-        display: block;
+    @include for-phone {
+        width: 90%;
+    }
+
+    figure {
         width: 100%;
-        cursor: zoom-in;
+        background-repeat: no-repeat;
+        // border: 8px ridge rgb(137,123,45);
+
+        @include for-phone {
+            width: 100%;
+            margin: -30px 0 10px 10px;
+        }
+    
+        & img {
+            display: block;
+            width: 100%;
+            cursor: zoom-in;
+            transition: all 0.2s ease-in-out;
+        }
+    
+        &:hover img {
+            opacity: 0;
+
+            @include for-phone {
+                opacity: 1;
+            }
+        }
     }
 
-    &:hover img {
-        opacity: 0;
+    .product-description {
+        @include for-phone {
+            display: block !important;
+            width: 200%;
+            flex: none;
+        }
     }
-}
 
-.small-pic {
-    width: 100px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: all 0.3s;
+    h4 {
+        @include for-phone {
+            display: inline-block;
+            font-size: 2em;
+        }
+    }
 
-    &:hover {
-        transform: scale(1.1);
+    .add-to-cart-btn {
+        @include for-phone {
+            position: absolute;
+            right: 10px !important;
+        }
+
+        @include button
         
     }
+
+    .additional-pics-list{
+        display: none;
+
+        & > img {
+            width: 97px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        @include for-phone {
+            display: block;
+            margin-left: 10px;
+        }
+    }
+
+    .additional-pic {
+        width: 100px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        @include for-phone {
+            display: none;
+        }
+    
+        &:hover {
+            transform: scale(1.1);
+
+            @include for-phone {
+                transform: none;
+            }
+        }
+    }
 }
 
-.add-to-cart {
-    @include button
-}
+
+
+
+
+
 
   

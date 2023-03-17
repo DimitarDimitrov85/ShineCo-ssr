@@ -1,20 +1,31 @@
-import React, { useCallback, useState } from 'react'
-import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap'
+import React, { useCallback, useEffect, useState, } from 'react'
+import { Navbar, Container, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { Icon } from '../../components'
 import { useCart } from 'react-use-cart'
 import { useSelector, useDispatch } from 'react-redux'
 import { setActivePage } from '../../slices/uiSlice'
 
 import './navbar.scss'
     
-export const NavBar = ( { orderPanelPosition }: any) => {
+export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
     const { activePage } = useSelector((state: any) => state.ui)
     const dispatch = useDispatch()
     const { totalItems } = useCart()
-    // const [activePage, setActivePage] = useState<any>(null)
+    const [isShownMenu, setIsShownMenu] = useState(false)
+
+    const onShowMenu = useCallback((e: any) => {
+        orderPanelPosition !== 0 && e.stopPropagation()
+        setIsShownMenu(true)
+    },[setIsShownMenu, orderPanelPosition])
+
+    useEffect(() => {
+        window.addEventListener('click', () => setIsShownMenu(false))
+    },[])
+
+    useEffect(() => {console.log(isShownMenu)},[isShownMenu])
+
     const pages = [
-        {path: '/', title: 'Home'},
+        {path: '/', title: 'Начало'},
         {path: '/product-pads', title: 'Подложки'},
         {path: '/product-salver', title: 'Подноси'},
         {path: '/product-clocks', title: 'Часовници'},
@@ -30,52 +41,38 @@ export const NavBar = ( { orderPanelPosition }: any) => {
     },[dispatch])
 
     return (
-        <Navbar className="navbar" {...activePage === 0 && {style: {position: 'absolute', width: '100%', zIndex: '2'}}}>
-            <Link to={'/'} id='0' onClick={onActive}><img src='/images/logo-gold.png' alt="" width={130} style={{marginLeft: '100px'}} className=''/></Link>
-            {/* <img src='/images/logo-gold.png' alt="" width={130} style={{marginLeft: '100px'}} className=''/> */}
+        <Navbar className={`navbar ${activePage === 0 ? 'navbar-home' : ''}`}>
+            <div className='burger-menu' onClick={onShowMenu}>
+                <div />
+                <div />
+                <div />
+            </div>
+            <Link to={'/'} id='0' onClick={onActive} className='brand'><img src='/images/logo-gold.png' alt=""/></Link>
             <Container>
-                {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
-                {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-                {/* <Navbar.Collapse id="basic-navbar-nav"> */}
-                <Nav className="me-auto">
+                <Nav className="me-auto" {...isShownMenu ? {style: {left: '0px'}} : {}}>
+                    <div className='menu-title-for-phone' onClick={(e: any) => {e.stopPropagation()}}>
+                        <h3>Меню</h3>
+                        <button type="button" className='btn-close' aria-label='Close' title='изтрий' onClick={() => setIsShownMenu(false)}></button>
+                    </div>
                     {
                         pages.map((page: any, index: any) => (
                             <Link className={`link ${activePage === index ? 'selected' : ''}`} key={index} to={page.path} id={index} onClick={onActive}>{page.title}</Link>
                         ))
                     }
-                    {/* <NavDropdown title="Dropdown" id="nav-dropdown-dark-example" menuVariant="dark" >
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
-                            Another action
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">
-                            Separated link
-                        </NavDropdown.Item>
-                    </NavDropdown> */}
-                    <Nav.Link style={{position: 'absolute', marginLeft: '65%'}}>
-                    {/* <Icon
-                        iconName="Cart2"
-                        color="green"
-                        size={30}
-                        className="align-top"
-                        onClick={orderPanelPosition}
-                        id='show'
-                    /> */}
-                    <img src={`/images/shopping-bags-${ totalItems > 0 ? 'full' : 'empty'}.png`} alt="" width={40}  onClick={orderPanelPosition} id='show'/>
-                    {
-                    totalItems > 0 && 
-                        <span style={{color: 'white', background: 'red', position: 'absolute', top: '0px', width: 'auto', height: '15px', borderRadius: '20px', paddingLeft: '3px', paddingRight: '3px', fontSize: '0.8em', display: 'inline-flex', alignItems: 'center'}}>
-                        {/* // <span className='counter'> */}
-                        {totalItems}
-                        </span>
-                    }
-                    
-                    </Nav.Link>
-                    
                 </Nav>
-                {/* </Navbar.Collapse> */}
+                <div className="bag">
+                        <img 
+                            src={`/images/shopping-bags-${ totalItems > 0 ? 'full' : 'empty'}.png`}
+                            alt="" 
+                            width={40} 
+                            onClick={(e) => onOrderPanelPosition(e, isShownMenu)} id='show'/>
+                        {
+                        totalItems > 0 && 
+                            <span>
+                            {totalItems}
+                            </span>
+                        }
+                    </div>
             </Container>
         </Navbar>
     )

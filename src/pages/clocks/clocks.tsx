@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 import { Cards } from '../../components'
 import { data } from '../../data'
 
-export const Articul3 = () => {
+export const Clocks = () => {
     return (
         <div>
-            <h2  style={{textAlign: 'center'}}>Articul3</h2>
+            <h2  style={{textAlign: 'center'}}>Часовници</h2>
             <Cards data={data.clocks}/>
         </div>
     )

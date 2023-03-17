@@ -1,32 +1,250 @@
-.cart-item {
-    // display: flex !important;
-    // flex-direction: row;
-    // justify-content: space-between;
-    // background-color: rgb(255, 255, 255);
-    padding: 5px 0 5px 0;
-    border-bottom: 1px solid black;
-    color: black;
-    transition: all 1s;
+@import '../../_mixins';
 
-    &:hover {
-        background-color: rgb(243, 241, 241);
+$btn-color: rgb(137,123,45);
+
+.ordersList {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+    @include for-phone {
+        width: 90%;
+        margin-top: 10px;
+        text-align: center;
     }
 
-    p {
-        // vertical-align: text-bottom !important;
-        // margin-top: 60px
+    .header {
+        border-bottom: 2px solid black;
+
+        @include for-phone {
+            display: none;
+        }
     }
-}
+    
+    .empty-cart {
+        text-align: center;
+        padding-bottom: 20px;
+    }
 
-button:hover, 
-button:active, 
-button:focus
-{
-    // outline: 0px !important;
-    box-shadow: none !important;
-}
+    .for-phone {
+        display: none;
 
-.delete {
-    float: right;
-    margin-top: 10px;
+        @include for-phone {
+            display: block ;
+        }
+    }
+
+    .my-auto {
+        @include for-phone {
+            width: 60%;
+            padding: 0;
+        }
+    }
+
+    .col-3 {
+        @include for-phone {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    .product-img {
+        margin-left: -5px;
+        width: 190px; 
+        height: 150px;
+
+        @include for-phone {
+            width: 100%;
+            height: auto;
+            margin-left: 0px;
+            // border: 8px ridge rgb(137,123,45);
+        }
+    }
+
+    .col-4 {
+        @include for-phone {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .cart-item {
+        padding: 5px 0 5px 0;
+        border-bottom: 1px solid black;
+        color: black;
+        transition: all 1s;
+
+        &:hover {
+            background-color: rgb(243, 241, 241);
+
+            @include for-phone {
+                background: none;
+            }
+        }
+
+        .quantity-btn {
+            background: transparent !important;
+            color: black !important;
+
+            &:hover {
+                background: $btn-color !important;
+                border-color: $btn-color;
+
+                @include for-phone {
+                    background: none !important;
+                    border-color: none;
+                }
+            }
+        }
+    }
+
+    .d-flex {
+        @include for-phone {
+            display: block !important;
+        }
+
+        .total-price-for-phone {
+            display: none;
+
+            @include for-phone {
+                display: block;
+            }
+
+            h4, p {
+                text-align: end;
+            }
+            
+        }
+
+        .mb-3 {
+            @include for-phone {
+                position: relative;
+                margin-top: 10px;
+                height: 50px;
+            }
+        }
+
+        .enter-btn {
+            color: black !important;
+            border: 1px solid $btn-color !important;
+            background: white !important;
+            box-shadow: 1px 1px 5px 3px rgb(182, 181, 181);
+            margin-top: 0px !important;
+
+            @include for-phone {
+                width: 100% !important;
+                margin-top: 0px !important;
+                margin-bottom: 8px !important;
+                height: 50px;
+                background: $btn-color !important;
+                color: white !important;
+                box-shadow: none;
+            }
+    
+            &:hover {
+                cursor: pointer;
+                color: white !important;
+                background: $btn-color !important;
+            }
+        }
+
+        .total-Price {
+            h4, p, div {
+                text-align: end;
+            }
+
+            h4, p{
+                @include for-phone {
+                    display: none;
+                }
+            }
+            
+        }
+
+        .clear-all-btn {
+            color: white;
+            border: 2px solid $btn-color !important;
+            background: $btn-color !important;
+
+            @include for-phone {
+                display: none;
+            }
+    
+            &:hover {
+                border: 2px solid white !important;
+                box-shadow: 0px 0px 1px 4px rgb(126, 126, 126);
+            }
+        }
+
+        .clear-all-btn-for-phone {
+            display: none;
+            width: 100%;
+            color: white;
+            border: 2px solid $btn-color !important;
+            background: $btn-color !important;
+
+            @include for-phone {
+                display: block;
+            }
+        }
+
+        .complete-order-btn {
+            color: white;
+            border: 2px solid $btn-color;
+            background: $btn-color !important;
+
+            @include for-phone {
+                width: 100%;
+                height: 50px;
+                padding: 0;
+                margin: 0 !important;
+                margin-top: -8px !important;
+                border-radius: 0.25rem;
+            }
+    
+            &:hover {
+                border-color: white !important;
+                box-shadow: 0px 0px 1px 4px rgb(126, 126, 126);
+
+                @include for-phone {
+                    border-color: $btn-color !important;
+                    box-shadow: none;
+                }
+            }
+        }
+
+    }
+
+    .delete {
+        @include for-phone {
+            display: none;
+        }
+
+        & > button {
+            float: right;
+            margin-top: 10px;
+
+            &:active, &:focus {
+                outline: none !important;
+                box-shadow: none !important;
+            }
+
+        }
+    }
+
+    .delete-for-fone {
+        display: none;
+
+        @include for-phone {
+            display: inline-block;
+            margin-bottom: 5px;
+            float: right;
+        }
+
+        &:active, &:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
 }
