@@ -29,7 +29,26 @@ const App = () => {
         dispatch(setActivePage(Number(sessionStorage.getItem('activePage'))))
         dispatch(setDiscountInfo(JSON.parse(discountInfo)))
     },[dispatch])
-    
+
+    const handleLocation = useCallback(() => {
+        const locationUrl = {
+            '/': 0,
+            '/product-pads': 1,
+            '/product-salver': 2,
+            '/product-clocks': 3,
+            '/product-fruitBowls': 4,
+            '/product-tables': 5,
+            '/other-product': 6,
+            '/about-us': 7,
+        } as any
+        sessionStorage.setItem('activePage', locationUrl[window.location.pathname])
+        dispatch(setActivePage(locationUrl[window.location.pathname]))
+    },[dispatch])
+
+    useEffect(() => {
+        window.addEventListener('popstate', handleLocation)
+    },[handleLocation])
+
     return (
             <div>
                 <NavBar orderPanelPosition={position} onOrderPanelPosition={onOrderPanelPosition}/>

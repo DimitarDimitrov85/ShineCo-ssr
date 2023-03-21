@@ -57,6 +57,7 @@ export const CompleteOrder = () => {
                         )
         }) 
 
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     },[])
 
     useEffect(() => {
@@ -71,13 +72,13 @@ export const CompleteOrder = () => {
         deliveryAddress === 'До адрес' && setSelectedOfficeAdress('')
         let text: any = ''
         items.forEach((item) => {
-            text += `${item.title}: ${item.quantity}pieces,\n`
+            text += `${item.title}: ${item.quantity}бр.,\n`
             
         })
         setMessage(`Поръчка:\n ${text}\n Общо: ${totalPrice}лв,
         ${discountInfo ? `
         \n Намаление с код: ${discountInfo.discountCode}, -${discountInfo.percent}%` : ''}
-        \n Фирма доставчик: ${deliveryCompany}
+        \n Фирма доставчик: ${deliveryCompany}.
         \n ${deliveryAddress}
         \n ${deliveryAddress === 'До офис на куриер' ? `${selectedOfficeAdress}` : ''}`)
 
@@ -90,20 +91,20 @@ export const CompleteOrder = () => {
         setSendResult('')
         
         steIsSending(true)
-        setTimeout(() => {
-            steIsSending(false)
-            setSendResult('OK')
-        },5000)
-        // emailjs.sendForm('service_j8i0v1r', 'template_akclrt9', form.current, 'pNH4kjrJTk9gWXOKw')
-        //     .then((result) => {
-        //         steIsSending(false)
-        //         setSendResult(result.text)
-        //         console.log(result.text);
-        //     }, (error) => {
-        //         steIsSending(false)
-        //         setSendResult(error.text)
-        //         console.log(error.text);
-        //     })
+        // setTimeout(() => {
+        //     steIsSending(false)
+        //     setSendResult('OK')
+        // },5000)
+        emailjs.sendForm('service_j8i0v1r', 'template_akclrt9', form.current, 'pNH4kjrJTk9gWXOKw')
+            .then((result) => {
+                steIsSending(false)
+                setSendResult(result.text)
+                console.log(result.text);
+            }, (error) => {
+                steIsSending(false)
+                setSendResult(error.text)
+                console.log(error.text);
+            })
 
     },[message])
 
@@ -126,7 +127,7 @@ export const CompleteOrder = () => {
             {
                 sendResult === 'OK' 
                 ? <div className='send-result'>
-                    <h5 className='successful' style={{color: 'green'}}>Поръчката е направена успешно</h5>
+                    <h5 className='successful'>Поръчката е направена успешно</h5>
                     <Icon
                         iconName="CheckLg"
                         color="green"
@@ -173,8 +174,8 @@ export const CompleteOrder = () => {
                         </Row>
                 
                         <div className='delivery'>
-                            <h5>Общо: {totalPrice}лв</h5>
-                            <div style={{width: '300px'}}>
+                            <h5>Общо: <span>{totalPrice}лв</span></h5>
+                            <div className='delivery-place'>
                                 <p>Изберете начин за доставка</p>
                                 <div className='d-flex justify-content-between contact'>
                                     <div className='form-check'>
@@ -239,7 +240,7 @@ export const CompleteOrder = () => {
                         }
                     </div>
                 </div>
-                : <div style={{textAlign: 'center', padding: '30px 0 30px 0'}}>
+                : <div className='empty-cart-msg'>
                     <h4>
                     Кошничката е празна!
                     </h4>

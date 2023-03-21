@@ -20,9 +20,11 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
 
     useEffect(() => {
         window.addEventListener('click', () => setIsShownMenu(false))
-    },[])
 
-    useEffect(() => {console.log(isShownMenu)},[isShownMenu])
+        return () => {
+            window.removeEventListener('click', () => {})
+        }
+    },[])
 
     const pages = [
         {path: '/', title: 'Начало'},

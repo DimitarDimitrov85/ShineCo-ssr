@@ -10,7 +10,7 @@ $btn-color: rgb(137,123,45);
 
     @include for-phone {
         width: 90%;
-        margin-top: 10px;
+        margin-top: 80px;
         text-align: center;
     }
 
@@ -25,6 +25,10 @@ $btn-color: rgb(137,123,45);
     .empty-cart {
         text-align: center;
         padding-bottom: 20px;
+
+        @include for-phone {
+            margin-top: 120px;
+        }
     }
 
     .for-phone {

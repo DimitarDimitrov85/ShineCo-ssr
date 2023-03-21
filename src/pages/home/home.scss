@@ -7,17 +7,15 @@
     height: 700px;
 
     @include for-phone {
-        // display: none !important;
         height: 200px;
     }
 }
 
 .info {
-    // box-shadow: 1px 3px 4px 3px rgb(221, 220, 220);
     background-image: url('../../../public/images/background/1_20.png');
     background-repeat: none;
     background-size: cover;
-    width: 50%; 
+    width: 50%;
     margin: auto; 
     margin-top: 10px;
     text-align: center;
@@ -27,7 +25,8 @@
     }
 
     .section-pics {
-        width: 50%;
+        // width: 50%;
+        width: 600px;
         margin: auto;
         margin-bottom: 50px;
 
@@ -44,7 +43,6 @@
             @include for-phone {
                 position: relative;
                 margin-left: 0 !important;
-                // margin-right: 0 !important;
             }
         }
     }

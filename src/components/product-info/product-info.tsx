@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Row, Col, Button } from 'react-bootstrap'
 import { useCart } from 'react-use-cart'
@@ -28,6 +28,10 @@ export const ProductInfo = () => {
         const y = (e.pageY - top) / height * 100
         setBackgroundPosition(`${x}% ${y}%`)
     }
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    },[])
 
     return (
         <div className='product-info'>

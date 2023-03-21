@@ -33,6 +33,10 @@ export const Cart = () => {
     },[dispatch])
 
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    },[])
+
+    useEffect(() => {
         discountInfo && setIsExistCode(true)
     },[discountInfo])
 
@@ -42,7 +46,6 @@ export const Cart = () => {
 
    
     const handleDiscount = useCallback((e: any) => {
-        console.log(searchDiscountCode)
         const exsistDiscount: any = data.dataDiscount.find((d: any) =>  d.code === searchDiscountCode)
         
         if ((e.code === 'Enter' || e.currentTarget.id === 'enter') && searchDiscountCode.length > 0) {

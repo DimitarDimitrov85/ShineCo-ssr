@@ -24,12 +24,12 @@ export const Cards = ({ data }: any) => {
 
     useEffect(() => {
         Aos.init({duration: 1000, once: true})
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     },[])
 
 
     const showProductInfo = useCallback((e: any) => {
         const id: any = Number(e.currentTarget.id)
-        console.log(id)
         const finded: any = data.find((card: any) => card.id === id)
         const url: string = `${location.pathname}/${e.currentTarget.dataset.name}`
         dispatch(setCardInfo({...finded, urlPath: url}))

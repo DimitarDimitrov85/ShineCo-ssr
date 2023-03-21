@@ -36,6 +36,7 @@ const SectionPictures = ( { imgData, urlPath, align, title, showing, id }: any) 
 export const Home = () => {
 
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         Aos.init({duration: 1000, once: true})
     },[])
 

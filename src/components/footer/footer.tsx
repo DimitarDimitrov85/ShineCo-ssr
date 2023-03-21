@@ -10,29 +10,29 @@ export const Footer = () => {
             <h4 className='text-center text-white'>Контакти</h4>
             <div className='d-flex justify-content-between contacts-info'>
                 <div>
-                    <div className='d-flex justify-content-between contact'>
+                    <div className='d-flex contact'>
                         <Icon
                             iconName="GeoAltFill"
                             color="rgb(153, 153, 153)"
                             size={30}
                         />
-                        <p>uh ds89y 98sdhc798 h87sdc 897h sdch9</p>
+                        <p>Гр. Варна, ЗПЗ (бивш ДАП2)</p>
                     </div>
-                    <div className='d-flex justify-content-between contact'>
+                    <div className='d-flex contact'>
                         <Icon
                             iconName="EnvelopeAtFill"
                             color="rgb(153, 153, 153)"
                             size={30}
                         />
-                        <p>uh ds89y 98sdhc798 h87sdc 897h sdch9</p>
+                        <p>info@shinecobg.com</p>
                     </div>
-                    <div  className='d-flex justify-content-between contact'>
+                    <div  className='d-flex contact'>
                         <Icon
                             iconName="TelephoneFill"
                             color="rgb(153, 153, 153)"
                             size={30}
                         />
-                        <p>uh ds89y 98sdhc798 h87sdc 897h sdch9</p>
+                        <p>+359 898 429 464</p>
                     </div>
                 </div>
                 <div className='social-media'>
@@ -48,8 +48,8 @@ export const Footer = () => {
                 </div>
             </div>
             
-            <p className='text-center text-white'>
-                Copyright &copy; Shine Corporation 2023
+            <p className='text-center text-white copyright'>
+                Copyright &copy; ShineCo. Corporation 2023
             </p>
         </footer>
     )

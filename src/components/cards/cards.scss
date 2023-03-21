@@ -1,15 +1,10 @@
 @import '../../_mixins';
 
 .cards-list {
-    width: 50%; 
+    width: 80%; 
     margin: auto;
     margin-bottom: 10px;
-    // text-align: center;
-
-    @include for-phone {
-        width: 80%;
-        text-align: center;
-    }
+    text-align: center;
 
     .card {
         width: 18rem;

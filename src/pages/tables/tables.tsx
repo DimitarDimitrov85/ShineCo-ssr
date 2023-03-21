@@ -5,7 +5,7 @@ import { data } from '../../data'
 export const Tables = () => {
     return (
         <div>
-            <h2 style={{textAlign: 'center'}}>Маси</h2>
+            <h2 className='productTitle'>Маси</h2>
             <Cards data={data.tables}/>
         </div>
     )

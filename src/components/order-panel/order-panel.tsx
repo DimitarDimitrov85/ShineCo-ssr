@@ -70,9 +70,9 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
             </ListGroup>
             {
                 !isEmpty && 
-                    <div className='d-flex justify-content-between checking-cart'>
+                    <div className='checking-cart'>
+                        <h5>Общо: <span style={{}}>{cartTotal}лв</span></h5>
                         <Link to='/cart' id='hide' onClick={hidePanel}><Button className='checking-cart-btn' variant="outline-success">Преглед на кошничката</Button></Link>
-                        <span>Общо: {cartTotal}лв</span>
                     </div>
             }
             

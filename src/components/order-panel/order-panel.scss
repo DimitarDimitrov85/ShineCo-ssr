@@ -3,7 +3,7 @@
 .div-panel {
     background: rgb(80, 80, 80);
     width: 400px;
-    max-height: 400px;
+    max-height: 500px;
     min-height: 100px;
     position: fixed;
     z-index: 2;
@@ -99,8 +99,15 @@
         background: rgb(80, 80, 80); 
         color: white;
         padding: 10px 0 10px 0;
+
+        span {
+            float: right; 
+            margin-top: 0 !important;
+        }
        
         &-btn {
+            margin-top: 10px;
+            width: 100%;
             @include button
         }
     }

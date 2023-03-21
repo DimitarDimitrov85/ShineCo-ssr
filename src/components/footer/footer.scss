@@ -7,13 +7,15 @@ footer {
     .contacts-info {
         margin: auto;
         margin-bottom: 20px;
-        margin-top: 20px;
+        margin-top: 60px;
         width: 500px;
-
+        
         @include for-phone {
             margin: auto;
             display: block !important;
             width: 100%;
+            margin-top: 40px;
+
         }
 
         .contact {
@@ -38,10 +40,16 @@ footer {
                 &:hover {
                     cursor: pointer;
                 }
-                
             }
+        }
+    }
+
+    .copyright {
+        margin-top: 60px;
+
+        @include for-phone {
+            margin-top: 50px;
         }
         
     }
-
 }

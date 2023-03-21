@@ -5,7 +5,7 @@ import './about-us.scss'
 
 export const AboutUs = () => {
     return (
-        <div>
+        <div className='productTitle'>
             <div className='info-about-us' >
                 <h2 style={{textAlign: 'center', fontFamily: 'Lora,Serif', fontWeight: '700', fontStyle: 'italic'}}>За нас</h2>
                 <Row className='row'>
