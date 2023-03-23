@@ -1,22 +1,44 @@
 @import './_mixins';
 
+@font-face {
+  font-family: mirra;
+  src: url(../public/Fonts/mirra.otf);
+}
+
+@font-face {
+  font-family: allegria-trial-light;
+  src: url(../public/Fonts/allegria-trial-light.ttf);
+}
+
+@font-face {
+  font-family: allegria-trial-regular;
+  src: url(../public/Fonts/allegria-trial-regular.ttf);
+}
+
+@font-face {
+  font-family: felidae;
+  src: url(../public/Fonts/felidae.ttf);
+}
+
+@font-face {
+  font-family: lithium_tf;
+  src: url(../public/Fonts/lithium_tf.otf);
+}
+
 body {
-  // background: rgb(253, 253, 253);
    /* width */
-   &::-webkit-scrollbar {
-    width: 10px;
+  &::-webkit-scrollbar {
+  width: 10px;
 }
 
 /* Track */
 &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
-    // border-radius: 10px;
 }
 
 /* Handle */
 &::-webkit-scrollbar-thumb {
     background: rgb(133, 133, 133);
-    // border-radius: 10px;
 }
 /* Handle on hover */
 &::-webkit-scrollbar-thumb:hover {
@@ -40,7 +62,11 @@ body {
 }
 
 .productTitle {
+  margin-top: 20px;
   text-align: center;
+  font-weight: bold;
+  color: #555;
+  font-family: mirra;
 
   @include for-phone {
     margin-top: 90px;

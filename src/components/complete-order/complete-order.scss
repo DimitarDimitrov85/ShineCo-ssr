@@ -17,7 +17,6 @@ form {
     @include for-phone {
         width: 90%;
         margin-top: 100px;
-        // display: block;
     }
 
     .row {
@@ -30,8 +29,6 @@ form {
         border: none; 
         border-bottom: 1px solid rgb(187, 187, 187); 
         border-radius: 0;
-
-        
     }
 
     h4 {
@@ -48,10 +45,7 @@ form {
             display: block;
             margin: auto;
         }
-        
-        span {
-            float: right;
-        }
+
         .delivery-place {
             width: 300px;
 

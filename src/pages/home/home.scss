@@ -25,7 +25,6 @@
     }
 
     .section-pics {
-        // width: 50%;
         width: 600px;
         margin: auto;
         margin-bottom: 50px;
@@ -39,7 +38,8 @@
         h3 {
             position: absolute;
             color: rgb(204, 179, 39);
-            // font-family:serif;
+            font-family: mirra;
+
             @include for-phone {
                 position: relative;
                 margin-left: 0 !important;
@@ -48,7 +48,14 @@
     }
 
     p {
-        font-family: Lora, Serif;
+        font-family: allegria-trial-regular;
         font-size: 1.1em;
+        padding: 0 10px 20px 10px;
+        font-weight: bold;
+    }
+
+    h3 {
+        font-family: felidae;
+        font-weight: bold;
     }
 }

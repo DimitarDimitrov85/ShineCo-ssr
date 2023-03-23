@@ -49,7 +49,7 @@ export const Footer = () => {
             </div>
             
             <p className='text-center text-white copyright'>
-                Copyright &copy; ShineCo. Corporation 2023
+                Copyright &copy; Shine Corporation 2023
             </p>
         </footer>
     )

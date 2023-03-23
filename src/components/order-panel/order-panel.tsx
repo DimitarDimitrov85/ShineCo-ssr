@@ -9,7 +9,7 @@ import CloseButton from 'react-bootstrap/CloseButton'
 import './order-panel.scss'
 
 export const OrderPanel = ({ hidePanel, position}: any) => {
-    const [positionTop, setPositionTop] = useState(55)
+    const [positionTop, setPositionTop] = useState(67)
 
     useEffect(() => {
         window.addEventListener('click', hidePanel)
@@ -31,7 +31,7 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
     } = useCart()
 
     const handleScroll = useCallback(() => {
-        setPositionTop(window.scrollY >= 55 ? 0: 55)
+        setPositionTop(window.scrollY >= 55 ? 0: 67)
     },[])
 
     useEffect(() => {
@@ -75,9 +75,6 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
                         <Link to='/cart' id='hide' onClick={hidePanel}><Button className='checking-cart-btn' variant="outline-success">Преглед на кошничката</Button></Link>
                     </div>
             }
-            
         </div>
     )
-
-
 }

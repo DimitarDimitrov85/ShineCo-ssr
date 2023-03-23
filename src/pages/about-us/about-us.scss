@@ -1,58 +1,66 @@
 @import '../../_mixins';
-
-.info-about-us {
-    width: 50%; 
-    margin: auto;
-    margin-top: 10px;
-    padding: 0 10px 0 10px;
-    text-align: center;
-    background-image: url('../../../public/images/background/1_20.png');
-    background-repeat: none;
-    background-size: cover;
-
-    @include for-phone {
-        width: 90%;
-    }
-
-    img {
+    .info-about-us {
+        width: 50%; 
+        margin: auto;
+        margin-top: 20px;
+        padding: 0 10px 0 10px;
+        text-align: center;
+        background-image: url('../../../public/images/background/1_20.png');
+        background-repeat: none;
+        background-size: cover;
+    
         @include for-phone {
-            display: block !important;
-            width: 100%;
-            flex: none;
+            margin-top: 90px;
+            width: 90%;
         }
-    }
-
-    .row {
-        margin-bottom: 80px;
-
-        @include for-phone {
-            margin-bottom: 0;
+    
+        h2 {
+            text-align: center;
+            font-family: mirra;
+            font-weight: bold;
         }
-
-        .text {
+    
+        p {
+            font-family: allegria-trial-regular;
+            font-weight: bold;
+        }
+    
+        img {
             @include for-phone {
                 display: block !important;
                 width: 100%;
                 flex: none;
             }
+        }
     
-            p {
-                line-height: 200%;
+        .row {
+            margin-bottom: 80px;
     
+            @include for-phone {
+                margin-bottom: 0;
+            }
+    
+            .text {
                 @include for-phone {
-                    line-height: 150%;
+                    display: block !important;
+                    width: 100%;
+                    flex: none;
+                }
+        
+                p {
+                    line-height: 200%;
+        
+                    @include for-phone {
+                        line-height: 150%;
+                    }
                 }
             }
         }
-    }
-
-    video {
-        @include for-phone {
-            height: 200px;
-            width: 95%;
+    
+        video {
+            @include for-phone {
+                height: 200px;
+                width: 95%;
+            }
         }
     }
-
-   
-  
-}

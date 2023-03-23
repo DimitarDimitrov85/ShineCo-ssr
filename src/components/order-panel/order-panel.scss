@@ -13,6 +13,7 @@
 
     @include for-phone {
         width: 350px;
+        top: 0 !important;
     }
 
     .close-btn {
@@ -21,6 +22,7 @@
         left: 20px; 
         background-color: none !important; 
         border: none !important;
+
         &:active, &:focus {
             outline: none !important;
             box-shadow: none !important;
@@ -31,6 +33,8 @@
         text-align: center; 
         color: white; 
         margin-top: 15px;
+        font-family: allegria-trial-regular;
+        font-weight: bold;
     }
 
     span {
@@ -111,5 +115,4 @@
             @include button
         }
     }
-    
 }

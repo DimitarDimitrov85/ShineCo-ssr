@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import './about-us.scss'
 
 export const AboutUs = () => {
+    
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    },[])
+
     return (
-        <div className='productTitle'>
+        <div>
             <div className='info-about-us' >
-                <h2 style={{textAlign: 'center', fontFamily: 'Lora,Serif', fontWeight: '700', fontStyle: 'italic'}}>За нас</h2>
+                <h2>За нас</h2>
                 <Row className='row'>
                     <Col>
                         <img src="/images/Zanas.jpg" alt="" width={'80%'}/>
@@ -18,7 +23,7 @@ export const AboutUs = () => {
                             Благодаря Ви, че сте отделили минутка от времето си!
                             Shine Corporation ( ShineCo.) е бранд създаден прeз 2021г.от Михаела Димитрова, която(също)е част от основателите 
                             в/на Lights-photography( www.lights-photography). 
-                            ShineCo. са ръчно изработени артикули от епоксидна смола.Те се отличават със своята иновативност и стилен дизайн. 
+                            ShineCo. са ръчно изработени артикули от епоксидна смола. Те се отличават със своята иновативност и стилен дизайн. 
                             Голяма част от тях са единствените в България!
                         </p>
                     </Col>

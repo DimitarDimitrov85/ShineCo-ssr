@@ -53,8 +53,8 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
             <Container>
                 <Nav className="me-auto" {...isShownMenu ? {style: {left: '0px'}} : {}}>
                     <div className='menu-title-for-phone' onClick={(e: any) => {e.stopPropagation()}}>
-                        <h3>Меню</h3>
-                        <button type="button" className='btn-close' aria-label='Close' title='изтрий' onClick={() => setIsShownMenu(false)}></button>
+                        {/* <h3>Меню</h3> */}
+                        <button type="button" className='btn-close' aria-label='Close' onClick={() => setIsShownMenu(false)}></button>
                     </div>
                     {
                         pages.map((page: any, index: any) => (

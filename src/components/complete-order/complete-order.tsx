@@ -44,14 +44,14 @@ export const CompleteOrder = () => {
 
     const  { discountInfo } = useSelector((state: any) => state.ui)
     const [totalPrice, setTotalPrice] = useState<any>(null)
-    const [officeAdress, setOfficeAdress] = useState<any>({ekont: [], speedy: []  })
+    const [officeAdress, setOfficeAdress] = useState<any>({econt: [], speedy: []  })
         
 
     useEffect(() => {
         axios.get('http://ee.econt.com/services/Nomenclatures/NomenclaturesService.getOffices.json').then((e: any) => {
             setOfficeAdress(
                 {...officeAdress, 
-                    ekont: e.data.offices.filter((adress: any) => adress.currency === 'BGN'), 
+                    econt: e.data.offices.filter((adress: any) => adress.currency === 'BGN'), 
                     speedy: data.speedyOffices.map((office: any) => (
                         {address: {fullAddress: office.address.fullAddressString.slice(4)}, id: office.id})).sort((a, b) => a.address.fullAddress > b.address.fullAddress ? 1 : -1)}
                         )
@@ -69,13 +69,15 @@ export const CompleteOrder = () => {
     },[discountInfo, cartTotal])
 
     useEffect(() => {
+        const generateID = Math.floor(Math.random() * 1000000);
+         
         deliveryAddress === 'До адрес' && setSelectedOfficeAdress('')
         let text: any = ''
         items.forEach((item) => {
             text += `${item.title}: ${item.quantity}бр.,\n`
             
         })
-        setMessage(`Поръчка:\n ${text}\n Общо: ${totalPrice}лв,
+        setMessage(`Поръчка номер ${generateID}:\n ${text}\n Общо: ${totalPrice}лв,
         ${discountInfo ? `
         \n Намаление с код: ${discountInfo.discountCode}, -${discountInfo.percent}%` : ''}
         \n Фирма доставчик: ${deliveryCompany}.
@@ -91,22 +93,19 @@ export const CompleteOrder = () => {
         setSendResult('')
         
         steIsSending(true)
-        // setTimeout(() => {
-        //     steIsSending(false)
-        //     setSendResult('OK')
-        // },5000)
-        emailjs.sendForm('service_j8i0v1r', 'template_akclrt9', form.current, 'pNH4kjrJTk9gWXOKw')
-            .then((result) => {
-                steIsSending(false)
-                setSendResult(result.text)
-                console.log(result.text);
-            }, (error) => {
-                steIsSending(false)
-                setSendResult(error.text)
-                console.log(error.text);
-            })
+       
+        emailjs.sendForm('service_k7iagiu', 'template_ds87z2m', form.current, 'UaZF2GFJghDJrjEwS')
+        .then((result) => {
+            steIsSending(false)
+            setSendResult(result.text)
+            console.log(result.text);
+        }, (error) => {
+            steIsSending(false)
+            setSendResult(error.text)
+            console.log(error.text);
+        })
 
-    },[message])
+    },[])
 
     const onDeliveryChange = useCallback((e: any) => {
         setDeliveryCompany(e.currentTarget.id)
@@ -122,7 +121,6 @@ export const CompleteOrder = () => {
     }, [])
 
     return (
-        
         <div>
             {
                 sendResult === 'OK' 
@@ -174,13 +172,13 @@ export const CompleteOrder = () => {
                         </Row>
                 
                         <div className='delivery'>
-                            <h5>Общо: <span>{totalPrice}лв</span></h5>
+                            <h5>Общо:<span> {totalPrice}лв</span></h5>
                             <div className='delivery-place'>
                                 <p>Изберете начин за доставка</p>
                                 <div className='d-flex justify-content-between contact'>
                                     <div className='form-check'>
-                                        <input className='form-check-input' type='radio' name='flexRadioDefault' id='ekont' onChange={onDeliveryChange}/>
-                                        <label className='form-check-label' htmlFor='ekont'>
+                                        <input className='form-check-input' type='radio' name='flexRadioDefault' id='econt' onChange={onDeliveryChange}/>
+                                        <label className='form-check-label' htmlFor='econt'>
                                             Econt
                                         </label>
                                     </div>

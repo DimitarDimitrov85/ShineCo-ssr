@@ -1,7 +1,7 @@
 @import '../../_mixins';
 
 .cards-list {
-    width: 80%; 
+    width: 80%;
     margin: auto;
     margin-bottom: 10px;
     text-align: center;
@@ -16,6 +16,11 @@
         @include for-phone {
             width: 16rem;
             height: 300px;
+        }
+
+        &:hover {
+            transition: box-shadow 0.3s ease-out;
+            box-shadow: 5px 15px 15px rgb(131, 131, 131);
         }
     
         img {
@@ -36,6 +41,9 @@
             text-overflow: ellipsis; 
             overflow: hidden; 
             white-space: nowrap;
+            text-align: center;
+            font-family: allegria-trial-regular;
+            font-weight: bold;
         }
 
         .add-to-cart {

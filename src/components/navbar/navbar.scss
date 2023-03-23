@@ -1,6 +1,7 @@
 @import '../../_mixins';
+  
 .navbar {
-    background-color: rgba(180, 180, 180, 0.4);
+    background-color: rgba(180, 180, 180, 0.5);
     box-shadow: inset 0px -2px 0px rgba(138, 137, 137, 0.2);
     padding: 0 !important;
 
@@ -43,7 +44,6 @@
         }
 
         img {
-            // margin-left: 100px;
             margin-left: 90%;
             width: 130px;
     
@@ -72,8 +72,7 @@
         .menu-title-for-phone {
             display: none;
             text-align: center;
-            background-color: rgb(190, 190, 190);
-            height: 30px;
+            height: 20px;
 
             @include for-phone {
                 display: block;
@@ -81,7 +80,7 @@
 
             .btn-close {
                 float: right;
-                margin-top: -35px;
+                margin-top: 5px;
                 margin-right: 5px;
 
                 &:active, &:focus {
@@ -89,7 +88,6 @@
                     box-shadow: none !important;
                 }
             }
-
         }
 
         .link {
@@ -97,6 +95,8 @@
             margin: 0 5px 0 5px;
             text-decoration: none;
             color: white;
+            font-family: mirra;
+            font-size: 1.4em;
             border-bottom: transparent 2px solid;
             transition: all 0.3s;
 
@@ -147,8 +147,6 @@
             align-items: center;
         }
     }
-
-    
 }
 
 .navbar-home {
