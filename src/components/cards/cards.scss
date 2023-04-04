@@ -21,6 +21,10 @@
         &:hover {
             transition: box-shadow 0.3s ease-out;
             box-shadow: 5px 15px 15px rgb(131, 131, 131);
+
+            @include for-phone {
+                box-shadow: 5px 15px 15px rgb(214, 214, 214);
+            }
         }
     
         img {
@@ -42,7 +46,7 @@
             overflow: hidden; 
             white-space: nowrap;
             text-align: center;
-            font-family: allegria-trial-regular;
+            font-family: myriad-pro-light;
             font-weight: bold;
         }
 

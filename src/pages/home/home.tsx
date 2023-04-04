@@ -79,13 +79,12 @@ export const Home = () => {
                         които биха били не само отлично допълнение към Вашият дом или офис , 
                         но и прекрасен подарък, с който да зарадвате близките си и любими хора! 
 
-                        Ако вече сте се сдобили с някой до нашите артикули които предлагаме, 
+                        Ако вече сте се сдобили с някой от нашите артикули които предлагаме, 
                         и Ви допадат, ще се радваме да споделите своето мнение и да ни 
                         препоръчате на Вашите приятели.
                         Ако все още не сте, то с удоволствие, ще Ви помогнем при избора на Вашето ново "Бижу"!
-                        Връзката с клиентите, е специална за нас
-
-                        НАШАТА ЦЕЛ Е КЛИЕНТЪТ ДА ОСТАНЕ ДОВОЛЕН ОТ КАЧЕСТВОТО, ОТ ИЗБОРА, И ОТ ОБСЛУЖВАНЕТО.
+                        Връзката с клиентите е специална за нас.
+                        Нaшата цел е клиентът да остане доволен от качеството, от избора, и от обслужването.
                     </p>
                     <SectionPictures imgData={data.home.clocks} urlPath='product-clocks' align='marginRight' title={{value: 'Часовници', position: '-20'}} showing='zoom-in' id='3'/>
                     <SectionPictures imgData={data.home.pads} urlPath='product-pads' align='marginLeft' title={{value: 'Подложки', position: '97'}} showing='zoom-in-up' id='1'/>
@@ -93,6 +92,7 @@ export const Home = () => {
                     <SectionPictures imgData={data.home.fruitBowls} urlPath='product-fruitBowls'align='marginLeft' title={{value: 'Фруктиери', position: '97'}} showing='zoom-in-left' id='4'/>
                     <SectionPictures imgData={data.home.salvers} urlPath='product-salver' align='marginRight' title={{value: 'Подноси', position: '-15'}} showing='zoom-in-right' id='2'/>
                     <SectionPictures imgData={data.home.others} urlPath='other-product' align='marginLeft' title={{value: 'Други', position: '97'}} showing='zoom-in-right' id='6'/>
+                    <video src='/images/Coaster.mp4' width='90%' height='100%' controls poster='/images/_SDS5930.jpg'></video>
             </div>
         </div>
     )

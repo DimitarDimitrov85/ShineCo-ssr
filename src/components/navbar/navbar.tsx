@@ -49,11 +49,10 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
                 <div />
                 <div />
             </div>
-            <Link to={'/'} id='0' onClick={onActive} className='brand'><img src='/images/logo-gold.png' alt=""/></Link>
+            <Link to={'/'} id='0' onClick={onActive} className='brand'><img src='/images/ShineCO LOGO.png' alt=''/></Link>
             <Container>
                 <Nav className="me-auto" {...isShownMenu ? {style: {left: '0px'}} : {}}>
                     <div className='menu-title-for-phone' onClick={(e: any) => {e.stopPropagation()}}>
-                        {/* <h3>Меню</h3> */}
                         <button type="button" className='btn-close' aria-label='Close' onClick={() => setIsShownMenu(false)}></button>
                     </div>
                     {

@@ -91,18 +91,14 @@ export const CompleteOrder = () => {
 
         e.preventDefault()
         setSendResult('')
-        
-        steIsSending(true)
        
         emailjs.sendForm('service_k7iagiu', 'template_ds87z2m', form.current, 'UaZF2GFJghDJrjEwS')
         .then((result) => {
             steIsSending(false)
             setSendResult(result.text)
-            console.log(result.text);
         }, (error) => {
             steIsSending(false)
             setSendResult(error.text)
-            console.log(error.text);
         })
 
     },[])

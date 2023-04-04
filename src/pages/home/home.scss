@@ -38,7 +38,7 @@
         h3 {
             position: absolute;
             color: rgb(204, 179, 39);
-            font-family: mirra;
+            font-family: myriad-pro-regular;
 
             @include for-phone {
                 position: relative;
@@ -48,14 +48,13 @@
     }
 
     p {
-        font-family: allegria-trial-regular;
+        font-family: myriad-pro-light;
         font-size: 1.1em;
         padding: 0 10px 20px 10px;
-        font-weight: bold;
+
     }
 
     h3 {
-        font-family: felidae;
-        font-weight: bold;
+        font-family: myriad-pro-regular;
     }
 }

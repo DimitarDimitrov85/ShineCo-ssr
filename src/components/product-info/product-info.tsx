@@ -50,8 +50,10 @@ export const ProductInfo = () => {
                 </Col>
                 <Col className='product-description'>
                     <h3>{cardInfo.title}</h3>
+                    <hr/>
                     <p>{cardInfo.info}</p>
                     <h4>{cardInfo.price}лв</h4>
+                    <hr/>
                     <Button className='btn-lg add-to-cart-btn' variant="outline-primary" onClick={() => addItem(cardInfo)} >Добави в кошничката</Button>
                 </Col>
             </Row>

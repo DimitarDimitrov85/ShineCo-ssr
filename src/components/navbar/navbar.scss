@@ -45,7 +45,7 @@
 
         img {
             margin-left: 90%;
-            width: 130px;
+            width: 120px;
     
             @include for-phone {
                 margin-left: 0px;
@@ -95,8 +95,7 @@
             margin: 0 5px 0 5px;
             text-decoration: none;
             color: white;
-            font-family: mirra;
-            font-size: 1.4em;
+            font-family: myriad-pro-light;
             border-bottom: transparent 2px solid;
             transition: all 0.3s;
 
