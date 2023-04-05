@@ -48,7 +48,7 @@ export const CompleteOrder = () => {
         
 
     useEffect(() => {
-        axios.get('http://ee.econt.com/services/Nomenclatures/NomenclaturesService.getOffices.json').then((e: any) => {
+        axios.get('https://ee.econt.com/services/Nomenclatures/NomenclaturesService.getOffices.json').then((e: any) => {
             setOfficeAdress(
                 {...officeAdress, 
                     econt: e.data.offices.filter((adress: any) => adress.currency === 'BGN'), 
