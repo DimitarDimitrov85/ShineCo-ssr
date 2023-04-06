@@ -17,7 +17,7 @@ const App = () => {
         !isShownMenu && e.stopPropagation()
         if(e.currentTarget.id === 'hide') {
             dispatch(setActivePage(null))
-            sessionStorage.setItem('activePage', 'null')
+            localStorage.setItem('activePage', 'null')
         }
         setPosition(e.currentTarget.id === 'show' ? 0 : -520)
     },[dispatch])
@@ -26,23 +26,23 @@ const App = () => {
         const currentCard: any = localStorage.getItem('cardInfo')
         const discountInfo: any = sessionStorage.getItem('discountInfo')
         dispatch(setCardInfo(JSON.parse(currentCard)))
-        dispatch(setActivePage(Number(sessionStorage.getItem('activePage'))))
+        dispatch(setActivePage(Number(localStorage.getItem('activePage'))))
         dispatch(setDiscountInfo(JSON.parse(discountInfo)))
     },[dispatch])
 
     const handleLocation = useCallback(() => {
         const locationUrl = {
-            '/': 0,
-            '/product-pads': 1,
-            '/product-salver': 2,
-            '/product-clocks': 3,
-            '/product-fruitBowls': 4,
-            '/product-tables': 5,
-            '/other-product': 6,
-            '/about-us': 7,
+            '': 0,
+            'product-pads': 1,
+            'product-salver': 2,
+            'product-clocks': 3,
+            'product-fruitBowls': 4,
+            'product-tables': 5,
+            'other-product': 6,
+            'about-us': 7,
         } as any
-        sessionStorage.setItem('activePage', locationUrl[window.location.pathname])
-        dispatch(setActivePage(locationUrl[window.location.pathname]))
+        localStorage.setItem('activePage', locationUrl[window.location.pathname.split('/')[1]])
+        dispatch(setActivePage(locationUrl[window.location.pathname.split('/')[1]]))
     },[dispatch])
 
     useEffect(() => {

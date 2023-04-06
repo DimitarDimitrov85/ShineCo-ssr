@@ -19,7 +19,7 @@ const SectionPictures = ( { imgData, urlPath, align, title, showing, id }: any) 
     const dispatch = useDispatch()
 
     const onActive = useCallback((e: any) => {
-        sessionStorage.setItem('activePage', e.currentTarget.id)
+        localStorage.setItem('activePage', e.currentTarget.id)
         dispatch(setActivePage(Number(e.currentTarget.id)))
     },[dispatch])
     

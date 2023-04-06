@@ -38,7 +38,7 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
     ]
 
     const onActive = useCallback((e: any) => {
-        sessionStorage.setItem('activePage', e.currentTarget.id)
+        localStorage.setItem('activePage', e.currentTarget.id)
         dispatch(setActivePage(Number(e.currentTarget.id)))
     },[dispatch])
 
