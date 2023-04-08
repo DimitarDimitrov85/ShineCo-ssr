@@ -17,33 +17,25 @@ const App = () => {
         !isShownMenu && e.stopPropagation()
         if(e.currentTarget.id === 'hide') {
             dispatch(setActivePage(null))
-            localStorage.setItem('activePage', 'null')
         }
         setPosition(e.currentTarget.id === 'show' ? 0 : -520)
     },[dispatch])
 
     useEffect(() => {
-        const currentCard: any = localStorage.getItem('cardInfo')
+        const searchParams = new URLSearchParams(window.location.search)
+        const cardInfoParam: any = searchParams.get('cardInfo')
         const discountInfo: any = sessionStorage.getItem('discountInfo')
-        dispatch(setCardInfo(JSON.parse(currentCard)))
-        dispatch(setActivePage(Number(localStorage.getItem('activePage'))))
+        dispatch(setCardInfo(JSON.parse(cardInfoParam)))
+        dispatch(setActivePage(Number(searchParams.get('activePage'))))
         dispatch(setDiscountInfo(JSON.parse(discountInfo)))
     },[dispatch])
 
     const handleLocation = useCallback(() => {
-        const locationUrl = {
-            '': 0,
-            'product-pads': 1,
-            'product-salver': 2,
-            'product-clocks': 3,
-            'product-fruitBowls': 4,
-            'product-tables': 5,
-            'other-product': 6,
-            'about-us': 7,
-        } as any
-        localStorage.setItem('activePage', locationUrl[window.location.pathname.split('/')[1]])
-        dispatch(setActivePage(locationUrl[window.location.pathname.split('/')[1]]))
-    },[dispatch])
+        const searchParams = new URLSearchParams(window.location.search)
+        const cardInfoParam: any = searchParams.get('cardInfo')
+        !cardInfo && dispatch(setCardInfo(JSON.parse(cardInfoParam)))
+        dispatch(setActivePage(Number(searchParams.get('activePage'))))
+    },[dispatch, cardInfo])
 
     useEffect(() => {
         window.addEventListener('popstate', handleLocation)
@@ -66,7 +58,7 @@ const App = () => {
                     <Route path='/about-us' element={<AboutUs />}/>
                     <Route path='/complete-order' element={<CompleteOrder />}/>
                     <Route path='/cart' element={<Cart />}/>
-                    <Route path={cardInfo?.urlPath || '/'} element={<ProductInfo />}/>
+                    <Route path='/product-info' element={<ProductInfo />}/>
                 </Routes>
 
                 <Footer />

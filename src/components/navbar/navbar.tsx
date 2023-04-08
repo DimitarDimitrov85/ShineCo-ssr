@@ -8,7 +8,7 @@ import { setActivePage } from '../../slices/uiSlice'
 import './navbar.scss'
     
 export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
-    const { activePage } = useSelector((state: any) => state.ui)
+    const { activePage} = useSelector((state: any) => state.ui)
     const dispatch = useDispatch()
     const { totalItems } = useCart()
     const [isShownMenu, setIsShownMenu] = useState(false)
@@ -27,18 +27,17 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
     },[])
 
     const pages = [
-        {path: '/', title: 'Начало'},
-        {path: '/product-pads', title: 'Подложки'},
-        {path: '/product-salver', title: 'Подноси'},
-        {path: '/product-clocks', title: 'Часовници'},
-        {path: '/product-fruitBowls', title: 'Фруктиери'},
-        {path: '/product-tables', title: 'Маси'},
-        {path: '/other-product', title: 'Други'},
-        {path: '/about-us', title: 'За нас'},
+        {path: '/?activePage=0', title: 'Начало'},
+        {path: `/product-pads?activePage=1`, title: 'Подложки'},
+        {path: '/product-salver?activePage=2', title: 'Подноси'},
+        {path: '/product-clocks?activePage=3', title: 'Часовници'},
+        {path: '/product-fruitBowls?activePage=4', title: 'Фруктиери'},
+        {path: '/product-tables?activePage=5', title: 'Маси'},
+        {path: '/other-product?activePage=6', title: 'Други'},
+        {path: '/about-us?activePage=7', title: 'За нас'},
     ]
 
     const onActive = useCallback((e: any) => {
-        localStorage.setItem('activePage', e.currentTarget.id)
         dispatch(setActivePage(Number(e.currentTarget.id)))
     },[dispatch])
 
@@ -49,7 +48,7 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
                 <div />
                 <div />
             </div>
-            <Link to={'/'} id='0' onClick={onActive} className='brand'><img src='/images/ShineCO LOGO.png' alt=''/></Link>
+            <Link to={'/?activePage=0'} id='0' onClick={onActive} className='brand'><img src='/images/ShineCO LOGO.png' alt=''/></Link>
             <Container>
                 <Nav className="me-auto" {...isShownMenu ? {style: {left: '0px'}} : {}}>
                     <div className='menu-title-for-phone' onClick={(e: any) => {e.stopPropagation()}}>

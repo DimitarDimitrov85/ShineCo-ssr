@@ -153,7 +153,7 @@ export const Cart = () => {
                                 <h4>Общо: {cartTotal}лв</h4> 
                                 {handleCorectCodeInfo()}
                                 <div className='d-fex justify-content-end py-3'>
-                                    <Link to='/complete-order'><Button className='btn mx-1 complete-order-btn' variant="outline-success" >Завършете поръчката</Button></Link>
+                                    <Link to='/complete-order?activePage=null'><Button className='btn mx-1 complete-order-btn' variant="outline-success" >Завършете поръчката</Button></Link>
                                 </div>
                             </div>
                     

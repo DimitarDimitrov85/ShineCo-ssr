@@ -37,22 +37,22 @@ export const ProductInfo = () => {
         <div className='product-info'>
             <Row>
                 <Col style={{marginRight: '20px'}}>
-                    <figure onMouseMove={handleMouseMove} style={{backgroundImage: `url(${selectedPicture || cardInfo.img})`, backgroundPosition: backgroundPosition}}>
-                        <img src={selectedPicture || cardInfo.img} alt="" />
+                    <figure onMouseMove={handleMouseMove} style={{backgroundImage: `url(${selectedPicture || cardInfo?.img})`, backgroundPosition: backgroundPosition}}>
+                        <img src={selectedPicture || cardInfo?.img} alt="" />
                     </figure>
                     <div className='additional-pics-list'>
                         {
-                            cardInfo.allPics?.map((pic: any, index: any) => (
+                            cardInfo?.allPics?.map((pic: any, index: any) => (
                                 <img src={pic} alt="" className='' onClick={() => {setSelectrdPicture(pic)}} key={index}/>
                             ))
                         }
                     </div>
                 </Col>
                 <Col className='product-description'>
-                    <h3>{cardInfo.title}</h3>
+                    <h3>{cardInfo?.title}</h3>
                     <hr/>
-                    <p>{cardInfo.info}</p>
-                    <h4>{cardInfo.price}лв</h4>
+                    <p>{cardInfo?.info}</p>
+                    <h4>{cardInfo?.price}лв</h4>
                     <hr/>
                     <Button className='btn-lg add-to-cart-btn' variant="outline-primary" onClick={() => addItem(cardInfo)} >Добави в кошничката</Button>
                 </Col>
@@ -60,7 +60,7 @@ export const ProductInfo = () => {
             <Row>
                 <Col xs={6}>
                 {
-                    cardInfo.allPics?.map((pic: any, index: any) => (
+                    cardInfo?.allPics?.map((pic: any, index: any) => (
                         <img src={pic} alt="" className='additional-pic' onClick={() => {setSelectrdPicture(pic)}} key={index}/>
                     ))
                 }

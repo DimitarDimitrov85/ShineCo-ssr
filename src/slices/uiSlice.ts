@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    cardInfo: {id: null, urlPath: ''},
+    cardInfo: null,
     discountInfo: null,
-    activePage: 0
+    activePage: null
 
 }
 
