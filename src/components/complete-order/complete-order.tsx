@@ -26,7 +26,7 @@ export const CompleteOrder = () => {
     
     const form = useRef<any>()
     const [message, setMessage] = useState('')
-    const [isSending, steIsSending] = useState(false)
+    const [isSending, setIsSending] = useState(false)
     const [deliveryCompany, setDeliveryCompany] = useState('')
     const [deliveryAddress, setDeliveryAddress] = useState('')
     const [sendResult, setSendResult] =useState('')
@@ -53,7 +53,7 @@ export const CompleteOrder = () => {
                 {...officeAdress, 
                     econt: e.data.offices.filter((adress: any) => adress.currency === 'BGN'), 
                     speedy: data.speedyOffices.map((office: any) => (
-                        {address: {fullAddress: office.address.fullAddressString.slice(4)}, id: office.id})).sort((a, b) => a.address.fullAddress > b.address.fullAddress ? 1 : -1)}
+                        {address: {fullAddress: office.address.fullAddressString.slice(4)}, id: office.id})).sort((a: any, b: any) => a.address.fullAddress > b.address.fullAddress ? 1 : -1)}
                         )
         }) 
 
@@ -88,16 +88,16 @@ export const CompleteOrder = () => {
     },[deliveryCompany, deliveryAddress, selectedOfficeAdress])
 
     const sendEmail = useCallback((e: any) => {
-
         e.preventDefault()
         setSendResult('')
+        setIsSending(true)
        
         emailjs.sendForm('service_k7iagiu', 'template_ds87z2m', form.current, 'UaZF2GFJghDJrjEwS')
         .then((result) => {
-            steIsSending(false)
+            setIsSending(false)
             setSendResult(result.text)
         }, (error) => {
-            steIsSending(false)
+            setIsSending(false)
             setSendResult(error.text)
         })
 

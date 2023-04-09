@@ -6,7 +6,7 @@ export const Clocks = () => {
     return (
         <div>
             <h2 className='productTitle'>Часовници</h2>
-            <Cards data={data.clocks}/>
+            <Cards data={{info: data.clocks, product: 'clocks'}}/>
         </div>
     )
 }

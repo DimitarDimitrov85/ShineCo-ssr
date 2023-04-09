@@ -6,7 +6,7 @@ export const Pads = () => {
     return (
         <div>
             <h2 className='productTitle'>Подложки</h2>
-            <Cards data={data.pads}/>
+            <Cards data={{info: data.pads, product: 'pads'}}/>
         </div>
     )
 }

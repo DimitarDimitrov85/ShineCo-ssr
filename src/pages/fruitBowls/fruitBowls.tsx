@@ -6,7 +6,7 @@ export const FruitBowls = () => {
     return (
         <div>
             <h2 className='productTitle'>Фруктиери</h2>
-            <Cards data={data.fruitBowls}/>
+            <Cards data={{info: data.fruitBowls, product: 'fruitBowls'}}/>
         </div>
     )
 }

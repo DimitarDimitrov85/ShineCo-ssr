@@ -93,10 +93,6 @@ form {
     height: 120px; 
     margin-bottom: 20px;
 
-    h5 {
-        color: green !important;
-    }
-
     @include for-phone {
         margin-top: 100px;
     }
@@ -107,7 +103,7 @@ form {
     }
 
     .successful{
-        color: red
+        color: green
     }
 
     .error {

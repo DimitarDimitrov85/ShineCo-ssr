@@ -28,17 +28,16 @@ export const Cards = ({ data }: any) => {
     },[])
 
     const showProductInfo = useCallback((e: any) => {
+        
         const id: any = Number(e.currentTarget.id)
-        const finded: any = data.find((card: any) => card.id === id)
-        dispatch(setCardInfo(finded))
-     
-        navigate(`/product-info?${e.currentTarget.dataset.name}&activePage=${activePage}&cardInfo=${JSON.stringify(finded)}`)
+        dispatch(setCardInfo({id: id, product: data.product}))
+        navigate(`/product-info?Product=${data.product}&${e.currentTarget.dataset.name}&activePage=${activePage}&cardId=${id}`)
         
     },[dispatch, navigate, data, activePage])
 
     return (
         <div className='cards-list'>
-            { data.map((pr: any) => (
+            { data.info.map((pr: any) => (
                 <Card className='card' key={pr.id} data-aos='zoom-in'>
                     <Card.Img variant="top" src={pr.img} id={pr.id} data-name={pr.title} onClick={showProductInfo}></Card.Img>
                     <Card.Body>

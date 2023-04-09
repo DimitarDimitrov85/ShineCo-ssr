@@ -23,17 +23,19 @@ const App = () => {
 
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search)
-        const cardInfoParam: any = searchParams.get('cardInfo')
+        const cardIdParam: any = searchParams.get('cardId')
+        const ProductParam: any = searchParams.get('Product')
         const discountInfo: any = sessionStorage.getItem('discountInfo')
-        dispatch(setCardInfo(JSON.parse(cardInfoParam)))
+        dispatch(setCardInfo({id: Number(cardIdParam), product: ProductParam}))
         dispatch(setActivePage(Number(searchParams.get('activePage'))))
         dispatch(setDiscountInfo(JSON.parse(discountInfo)))
     },[dispatch])
 
     const handleLocation = useCallback(() => {
         const searchParams = new URLSearchParams(window.location.search)
-        const cardInfoParam: any = searchParams.get('cardInfo')
-        !cardInfo && dispatch(setCardInfo(JSON.parse(cardInfoParam)))
+        const cardIdParam: any = searchParams.get('cardId')
+        const ProductParam: any = searchParams.get('Product')
+        !cardInfo && dispatch(setCardInfo({id: Number(cardIdParam), product: ProductParam}))
         dispatch(setActivePage(Number(searchParams.get('activePage'))))
     },[dispatch, cardInfo])
 
