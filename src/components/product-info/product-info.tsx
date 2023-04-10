@@ -26,7 +26,7 @@ export const ProductInfo = () => {
 
     useEffect(() => {
         cardInfo && setTimeout(() => {
-            const finded: any = data[cardInfo?.product].find((card: any) => card.id === Number(cardInfo?.id))
+            const finded: any = data[cardInfo?.product]?.find((card: any) => card.id === Number(cardInfo?.id))
             setProductData(finded)
         }, 10)
         

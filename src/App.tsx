@@ -4,6 +4,7 @@ import { setCardInfo, setDiscountInfo, setActivePage } from './slices/uiSlice'
 import { Pads, Salvers, Clocks, FruitBowls, Tables, OtherArticuls, Cart, Home, AboutUs } from './pages'
 import { Routes, Route } from 'react-router-dom'
 import { ProductInfo, OrderPanel, CompleteOrder, Footer, NavBar } from './components'
+import { data } from './data'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
@@ -24,9 +25,25 @@ const App = () => {
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search)
         const cardIdParam: any = searchParams.get('cardId')
-        const ProductParam: any = searchParams.get('Product')
+        if (cardIdParam) {
+            const productParam: any = searchParams.get('Product')
+            const finded: any = data[productParam]?.find((card: any) => card.id === Number(cardInfo?.id))
+            document.querySelector('meta[property="og:image"]')?.setAttribute('content', `https://www.shinecobg.com${finded?.img}`)
+            document.querySelector('meta[name="description"]')?.setAttribute('content', `${finded?.title}.`)
+        }
+        else {
+            document.querySelector('meta[property="og:image"]')?.setAttribute('content', 'https://www.shinecobg.com/images/ShineCO%20LOGO.png')
+            document.querySelector('meta[name="description"]')?.setAttribute('content', 'Луксозни продукти от епоксидна смола и дърво.')
+        }
+        
+    })
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search)
+        const cardIdParam: any = searchParams.get('cardId')
+        const productParam: any = searchParams.get('Product')
         const discountInfo: any = sessionStorage.getItem('discountInfo')
-        dispatch(setCardInfo({id: Number(cardIdParam), product: ProductParam}))
+        dispatch(setCardInfo({id: Number(cardIdParam), product: productParam}))
         dispatch(setActivePage(Number(searchParams.get('activePage'))))
         dispatch(setDiscountInfo(JSON.parse(discountInfo)))
     },[dispatch])
@@ -34,8 +51,8 @@ const App = () => {
     const handleLocation = useCallback(() => {
         const searchParams = new URLSearchParams(window.location.search)
         const cardIdParam: any = searchParams.get('cardId')
-        const ProductParam: any = searchParams.get('Product')
-        !cardInfo && dispatch(setCardInfo({id: Number(cardIdParam), product: ProductParam}))
+        const productParam: any = searchParams.get('Product')
+        !cardInfo && dispatch(setCardInfo({id: Number(cardIdParam), product: productParam}))
         dispatch(setActivePage(Number(searchParams.get('activePage'))))
     },[dispatch, cardInfo])
 

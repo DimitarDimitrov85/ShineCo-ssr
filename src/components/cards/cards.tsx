@@ -31,7 +31,7 @@ export const Cards = ({ data }: any) => {
         
         const id: any = Number(e.currentTarget.id)
         dispatch(setCardInfo({id: id, product: data.product}))
-        navigate(`/product-info?Product=${data.product}&${e.currentTarget.dataset.name}&activePage=${activePage}&cardId=${id}`)
+        navigate(`/product-info?Product=${data.product}&activePage=${activePage}&cardId=${id}`)
         
     },[dispatch, navigate, data, activePage])
 
