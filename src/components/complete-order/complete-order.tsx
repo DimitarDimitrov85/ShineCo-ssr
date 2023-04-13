@@ -158,7 +158,7 @@ export const CompleteOrder = () => {
                         </Row>
                         <Row>
                             <Col>
-                                <Input type="text" placeholder='Region' title='Облас' name='region'/>
+                                <Input type="text" placeholder='Region' title='Област' name='region'/>
                             </Col>
                         </Row>
                         <Row>

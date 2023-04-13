@@ -30,10 +30,17 @@ const App = () => {
             const finded: any = data[productParam]?.find((card: any) => card.id === Number(cardInfo?.id))
             document.querySelector('meta[property="og:image"]')?.setAttribute('content', `https://www.shinecobg.com${finded?.img}`)
             document.querySelector('meta[name="description"]')?.setAttribute('content', `${finded?.title}.`)
+            document.querySelector('meta[property="og:title"]')?.setAttribute('content', `${finded?.title}.`)
+            document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', `https://www.shinecobg.com${finded?.img}`)
+            document.title = `${finded?.title}.`
+
         }
         else {
             document.querySelector('meta[property="og:image"]')?.setAttribute('content', 'https://www.shinecobg.com/images/ShineCO%20LOGO.png')
             document.querySelector('meta[name="description"]')?.setAttribute('content', 'Луксозни продукти от епоксидна смола и дърво.')
+            document.querySelector('meta[property="og:title"]')?.setAttribute('content', 'Онлайн магазин ShineCo.')
+            document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', 'https://www.shinecobg.com/images/ShineCO%20LOGO.png')
+            document.title = 'Онлайн магазин ShineCo.'
         }
         
     })
