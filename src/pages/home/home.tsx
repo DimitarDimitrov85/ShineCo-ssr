@@ -25,7 +25,7 @@ const SectionPictures = ( { imgData, urlPath, align, title, showing, id }: any) 
     return (
         <div className='section-pics' style={{[align]: '0px'}}  data-aos={showing}>
             <h3 style={{marginLeft: `${title.position}%`}}>{title.value}</h3>
-            <Link to={`/${urlPath}`} onClick={onActive} id={id}>
+            <Link reloadDocument to={`/${urlPath}`} onClick={onActive} id={id}>
                 <Img src={imgData} key={imgData}/>
             </Link>
         </div>

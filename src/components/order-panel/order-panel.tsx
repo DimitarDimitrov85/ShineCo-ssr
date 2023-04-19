@@ -72,7 +72,7 @@ export const OrderPanel = ({ hidePanel, position}: any) => {
                 !isEmpty && 
                     <div className='checking-cart'>
                         <h5>Общо: <span style={{}}>{cartTotal}лв</span></h5>
-                        <Link to='/cart?activePage=null' id='hide' onClick={hidePanel}><Button className='checking-cart-btn' variant="outline-success">Преглед на кошничката</Button></Link>
+                        <Link reloadDocument to='/cart?activePage=null' id='hide' onClick={hidePanel}><Button className='checking-cart-btn' variant="outline-success">Преглед на кошничката</Button></Link>
                     </div>
             }
         </div>

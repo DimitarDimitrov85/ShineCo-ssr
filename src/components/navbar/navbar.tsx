@@ -2,14 +2,12 @@ import React, { useCallback, useEffect, useState, } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useCart } from 'react-use-cart'
-import { useSelector, useDispatch } from 'react-redux'
-import { setActivePage } from '../../slices/uiSlice'
+import { useSelector } from 'react-redux'
 
 import './navbar.scss'
     
 export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
-    const { activePage} = useSelector((state: any) => state.ui)
-    const dispatch = useDispatch()
+    const { activePage } = useSelector((state: any) => state.ui)
     const { totalItems } = useCart()
     const [isShownMenu, setIsShownMenu] = useState(false)
 
@@ -37,10 +35,6 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
         {path: '/about-us?activePage=7', title: 'За нас'},
     ]
 
-    const onActive = useCallback((e: any) => {
-        dispatch(setActivePage(Number(e.currentTarget.id)))
-    },[dispatch])
-
     return (
         <Navbar className={`navbar ${activePage === 0 ? 'navbar-home' : ''}`}>
             <div className='burger-menu' onClick={onShowMenu}>
@@ -48,7 +42,7 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
                 <div />
                 <div />
             </div>
-            <Link to={'/?activePage=0'} id='0' onClick={onActive} className='brand'><img src='/images/ShineCO LOGO.png' alt=''/></Link>
+            <Link reloadDocument to={'/?activePage=0'} id='0' className='brand'><img src='/images/ShineCO LOGO.png' alt=''/></Link>
             <Container>
                 <Nav className="me-auto" {...isShownMenu ? {style: {left: '0px'}} : {}}>
                     <div className='menu-title-for-phone' onClick={(e: any) => {e.stopPropagation()}}>
@@ -56,7 +50,7 @@ export const NavBar = ( { onOrderPanelPosition, orderPanelPosition }: any) => {
                     </div>
                     {
                         pages.map((page: any, index: any) => (
-                            <Link className={`link ${activePage === index ? 'selected' : ''}`} key={index} to={page.path} id={index} onClick={onActive}>{page.title}</Link>
+                            <Link reloadDocument className={`link ${activePage === index ? 'selected' : ''}`} key={index} to={page.path} id={index}>{page.title}</Link>
                         ))
                     }
                 </Nav>
